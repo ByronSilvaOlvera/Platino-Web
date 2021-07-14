@@ -1,0 +1,198 @@
+
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Byron",
+    "apellidos"     : "Silva",
+    "identificacion": "0999999999",
+    "telefono"      : "0987230279",
+    "email"         : "byrons@gmail.com",
+    "direccion"     : "floridas",
+    "fechanacio"    : "1987-07-12"
+}
+
+####
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0199999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwins@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+######
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0299999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinh@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+########
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0399999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinj@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+########
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0499999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwink@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+#######
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0599999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinl@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+#######
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0699999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinz@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+#########
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0799999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinx@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+######
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0899999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinc@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+######
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0819999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinv@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+####
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0829999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinb@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+
+#####
+
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0839999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinn@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+
+#####
+
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0849999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwinm@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+

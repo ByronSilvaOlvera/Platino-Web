@@ -9,6 +9,11 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+require('dotenv').config()
+
+
+// DB Config
+require('./database/db').dbConnection();
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTER
 app.use('/', usersRouter);
+app.use('/peluqueria/api/cliente', require("./routes/cliente-rt"));
+
 
 
 

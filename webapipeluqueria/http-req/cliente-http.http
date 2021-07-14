@@ -1,0 +1,60 @@
+
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Byron",
+    "apellidos"     : "Silva",
+    "identificacion": "0999999999",
+    "telefono"      : "0987230279",
+    "email"         : "byrons@gmail.com",
+    "direccion"     : "floridas",
+    "fechanacio"    : "1987-07-12"
+}
+
+####
+
+POST http://localhost:8092/peluqueria/api/cliente/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres"       : "Edwin",
+    "apellidos"     : "Olvera",
+    "identificacion": "0199999999",
+    "telefono"      : "0987230277",
+    "email"         : "edwins@gmail.com",
+    "direccion"     : "florida",
+    "fechanacio"    : "1987-07-10"
+}
+
+
+#####
+
+GET http://localhost:8092/peluqueria/api/cliente/all/page/1/ HTTP/1.1
+
+####
+GET http://localhost:8092/peluqueria/api/cliente/all/page/2/ HTTP/1.1
+####
+GET http://localhost:8092/peluqueria/api/cliente/all/page/3/ HTTP/1.1
+####
+
+GET http://localhost:8092/peluqueria/api/cliente/all/page/4/ HTTP/1.1
+####
+GET http://localhost:8092/peluqueria/api/cliente/one/60ee8a1bb98a932cb04c7543/ HTTP/1.1
+
+######
+
+PUT http://localhost:8092/peluqueria/api/cliente/edit/60ee8a1bb98a932cb04c7543/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres": "Edwin Pedrihno",
+    "apellidos": "Olvera Pazmino"
+}
+
+
+
+
+
+
