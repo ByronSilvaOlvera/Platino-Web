@@ -1,0 +1,65 @@
+.title-category {
+  margin: 0.5rem 2rem;
+}
+
+$iconUser : #921899;
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  .Name-view {
+    width: calc(100% - 45%);
+
+    i {
+      margin: 0 1rem 0 0;
+      font-size: 22px;
+      color: $iconUser;
+    }
+  }
+
+  .transaccion {
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  div {
+    p {
+      margin: 0;
+    }
+  }
+
+}
+
+
+
+.card-user {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+
+  .user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+
+    i {
+      margin: 0 0.5rem;
+      font-size: 35px;
+      color: $iconUser;
+    }
+  }
+
+  .date {
+    small {
+      font-size: 12px;
+    }
+  }
+}

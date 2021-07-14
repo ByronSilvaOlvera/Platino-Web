@@ -1,0 +1,41 @@
+
+$icon : #821588;
+$iconSelect : #f5e8f6 ;
+
+.sub-menu-option{
+    
+    padding: 150px 0;
+    height: 100%;
+    
+
+    .body{
+        padding: 20px 0;        
+        
+        height: 100%;
+        div{
+      
+            padding: 10px 0;
+            i{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+            }
+            
+        }
+        div:hover{
+            color: $icon;
+        }
+    }
+    i{
+        
+        font-size: 20px;
+        margin: 12px;
+    }
+}
+
+.active{
+    transition: 0.5s;
+    background: $iconSelect ;
+    color: #c776cc;
+}
