@@ -1,0 +1,30 @@
+CLientes
+	nombre
+	identificacion
+	telefono
+	email
+	direccion
+	fecha nacimiento
+	
+
+Citas
+	fecha
+	hora
+	descripcion
+	estado pendiente/cambio/no asistio/asistida
+	id_cliente
+
+Atencion
+	fecha
+	hora
+	estado /asistida
+	servicio { n...  }	
+	id_cita
+
+
+Servicio 
+	nombre
+	precio
+	tiempo
+	
+	

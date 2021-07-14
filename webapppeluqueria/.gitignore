@@ -1,18 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-webapppeluqueria/dist
-webapppeluqueria/tmp
-webapppeluqueria/out-tsc
+/dist
+/tmp
+/out-tsc
 # Only exists if Bazel was run
-webapppeluqueria//bazel-out
+/bazel-out
 
 # dependencies
-webapipeluqueria/node_modules
 webapppeluqueria/node_modules
-
-webapppeluqueria/.vscode
-webapipeluqueria/.vscode
+webapipeluqueria/node_modules
 
 # profiling files
 chrome-profiler-events*.json
@@ -35,11 +32,11 @@ chrome-profiler-events*.json
 .history/*
 
 # misc
-webapppeluqueria/.sass-cache
+/.sass-cache
 /connect.lock
 /coverage
 /libpeerconnection.log
-webapppeluqueria/npm-debug.log
+npm-debug.log
 yarn-error.log
 testem.log
 /typings
