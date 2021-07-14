@@ -1,14 +1,18 @@
 const { Schema, model } = require('mongoose');
-import { Cita } from "./cita-model";
-import { Servicio } from "./servicio-model";
+const Cita = require('./cita-model');
+const Servicio = require('./servicio-model');
+
 
 const AtencionSchema =  Schema({
 
   fecha     : { type: Date, default: Date.now },
   hora      : { type: String },
-  idCita    : { type: Cita.objectId, ref : 'Cita'},
-  idservicio: { type: Servicio.objectId, ref : 'Servicio'}
-    
-  });
+  idcita    : { type: Schema.Types.ObjectId, ref : Cita },
+  idservicio: [  { uid : {  type: Schema.Types.ObjectId, ref : Servicio } } ]
+
+},
+{
+  timestamps: true
+});
   
-  module.exports = model('Atencion', AtencionSchema );
+module.exports = model('Atencion', AtencionSchema );

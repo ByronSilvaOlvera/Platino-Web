@@ -30,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ROUTER
 app.use('/', usersRouter);
 app.use('/peluqueria/api/cliente', require("./routes/cliente-rt"));
+app.use('/peluqueria/api/cita', require("./routes/cita-rt"));
+app.use('/peluqueria/api/atencion', require("./routes/atencion-rt"));
+app.use('/peluqueria/api/servicio', require("./routes/servicio-rt"));
 
 
 

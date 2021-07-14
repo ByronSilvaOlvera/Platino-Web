@@ -1,0 +1,85 @@
+
+
+POST http://localhost:8092/peluqueria/api/atencion/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "fecha"     : "2021/07/14",
+    "hora"      : "12:00",
+    "idcita"    : "60ef0e63a790d92b0ca4f891",
+    "idservicio": [
+        {"uid" : "60ef18d5a2089d4e80b785f7"},
+        {"uid" : "60ef1934a2089d4e80b785f9"}
+    ]
+}
+
+####
+
+POST http://localhost:8092/peluqueria/api/atencion/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "fecha"     : "2021/07/14",
+    "hora"      : "12:00",
+    "idcita"    : "60ef0ec4d972d657c4fcc698",
+    "idservicio": [
+        {"uid" : "60ef1954a2089d4e80b785ff"}
+    ]
+}
+
+#####
+
+POST http://localhost:8092/peluqueria/api/atencion/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "fecha"     : "2021/07/16",
+    "hora"      : "12:00",
+    "idcita"    : "60ef0ec4d972d657c4fcc698",
+    "idservicio": [
+        {"uid" : "60ef1954a2089d4e80b785ff"}
+    ]
+}
+
+#####
+
+GET http://localhost:8092/peluqueria/api/atencion/all/page/1/ HTTP/1.1
+
+####
+GET http://localhost:8092/peluqueria/api/atencion/all/page/2/ HTTP/1.1
+####
+GET http://localhost:8092/peluqueria/api/atencion/all/page/3/ HTTP/1.1
+####
+
+GET http://localhost:8092/peluqueria/api/atencion/all/page/4/ HTTP/1.1
+
+#### OBTENER UNA atencion
+GET http://localhost:8092/peluqueria/api/atencion/one/60ef1daf151c580b4cafceee/ HTTP/1.1
+
+######
+
+PUT http://localhost:8092/peluqueria/api/atencion/edit/60ef1daf151c580b4cafceee/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "idservicio": [
+        {"uid" : "60ef18d5a2089d4e80b785f7" },
+        {"uid" : "60ef1934a2089d4e80b785f9" },
+        {"uid" : "60ef1943a2089d4e80b785fb" }
+    ]
+}
+
+#####
+
+
+POST http://localhost:8092/peluqueria/api/atencion/all/fecha/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "fechaorder" : ""
+}
+
+
+
+
+

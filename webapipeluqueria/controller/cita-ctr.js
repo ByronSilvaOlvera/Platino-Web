@@ -1,39 +1,38 @@
 var { request, response } = require('express');
-const Cliente = require("../models/cliente-model");
+const Cita = require("../models/cita-model");
 
 // ok, msg, data
 
 const addEntity = async (req=request, res=response) => {
     try {
 
-        cliente = await Cliente(req.body);
-        await cliente.save();
+        cita = await Cita(req.body);
+        await cita.save();
         res.status(200).json({
             ok:true,
-            cliente
+            cita
         });
 
     } catch (error) {
         res.status(404).json({
             ok: false,
-            msg: error
+            msg: 'Crear cita => error '+error
         })
-       //console.log('Error ', error);
     }
 }
 const getEntity = async (req=request, res=response) => {
     try {
         const { id } = req.params;
        
-        cliente = await Cliente.findById(id);
+        cita = await Cita.findById(id);
 
         res.status(200).json({
             ok:true,
-            cliente
+            cita
         });
         
     } catch (error) {
-        console.log('Error ', error);
+        console.log('Un cita => Error ', error);
         res.status(404).json({
             ok: false,
             msg: error
@@ -44,16 +43,16 @@ const getAllEntity = async (req=request, res=response) => {
     try {
         const { num, limit = 6 } = req.params;
         
-        clientes = await Cliente.find()
+        citas = await Cita.find()
             .limit(limit * 1)
             .skip((num - 1) * limit)
             .exec();
 
-        if( clientes.length > 0 ){    
+        if( citas.length > 0 ){    
             res.status(200).json({
                 ok:true,
                 page:num,
-                clientes
+                citas
             });
         }else{
             res.status(200).json({
@@ -63,30 +62,34 @@ const getAllEntity = async (req=request, res=response) => {
         }
 
     } catch (error) {
-        console.log('Error ', error);
+        console.log('Todas cita =>Error ', error);
+        res.status(404).json({
+            ok: false,
+            msg: error
+        })
     }
 }
 const UpdateEntity = async (req=request, res=response) => {
     try {
         const { id } = req.params;
-        const cliente  = req.body;
-        
-        const response = await Cliente.findOneAndUpdate(
+        const cita  = req.body;
+
+        const response = await Cita.findOneAndUpdate(
              { _id: id },
-             cliente ,
+             cita ,
              { new: true }
-        ).exec();
-        
+        ).exec();        
+
         res.status(200).json({
             ok:true,
-            cliente:response     
+            cita:response     
         });
         
     } catch (error) {
-        console.log('Error ', error);
+        console.log('Update cita=>Error ', error);
         res.status(404).json({
             ok: false,
-            msg: 'Actulizar cliente: '+error
+            msg: 'Actulizar cita: '+error
         })
     }
 }
@@ -99,5 +102,5 @@ const deleteEntity = async (req=request, res=response) => {
 }
 
 module.exports = {
-    addEntity, getAllEntity, getEntity, UpdateEntity, deleteEntity
+    addEntity, getAllEntity, getEntity, UpdateEntity
 }

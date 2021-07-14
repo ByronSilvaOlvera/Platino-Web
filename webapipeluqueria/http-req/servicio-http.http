@@ -1,0 +1,84 @@
+
+
+POST http://localhost:8092/peluqueria/api/servicio/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "manicure",
+    "precio": "5.00",
+    "tiempo": "30"
+}
+
+####
+
+POST http://localhost:8092/peluqueria/api/servicio/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "pedicure",
+    "precio" : "5.00",
+    "tiempo" : "30"
+}
+
+#####
+
+POST http://localhost:8092/peluqueria/api/servicio/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+     "nombre": "Corte de cabello",
+    "precio": "15.00",
+    "tiempo": "30"
+}
+
+####
+POST http://localhost:8092/peluqueria/api/servicio/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+     "nombre": "Tinturado de cabello",
+    "precio": "30.00",
+    "tiempo": "1:30"
+}
+
+#####
+
+POST http://localhost:8092/peluqueria/api/servicio/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+     "nombre": "Permanente",
+    "precio": "30.00",
+     "tiempo": "2:00"
+}
+    
+
+##### #### OBTENER 6 servicio
+
+GET http://localhost:8092/peluqueria/api/servicio/all/page/1/ HTTP/1.1
+
+####
+GET http://localhost:8092/peluqueria/api/servicio/all/page/2/ HTTP/1.1
+####
+GET http://localhost:8092/peluqueria/api/servicio/all/page/3/ HTTP/1.1
+####
+
+GET http://localhost:8092/peluqueria/api/servicio/all/page/4/ HTTP/1.1
+
+#### OBTENER UNA servicio
+GET http://localhost:8092/peluqueria/api/servicio/one/60ef0e63a790d92b0ca4f891/ HTTP/1.1
+
+######
+
+PUT http://localhost:8092/peluqueria/api/servicio/edit/60ef18d5a2089d4e80b785f7/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "precio": "7.53"
+}
+
+
+
+
+
+
