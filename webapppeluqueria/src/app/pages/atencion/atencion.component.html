@@ -1,1 +1,30 @@
-<p>atencion works!</p>
+<div *ngIf="seleccion == 0" >
+    <app-inicio-page></app-inicio-page>
+</div>
+
+<div class="cliente-opciones " >
+    <!-- List -->
+
+    <div class="pg-cliente" *ngIf="seleccion == 1">
+        <app-grid-data title="Listado de Clientes" [header]="header"
+            [table]="atencion" *ngIf="atencion.length > 0">
+        </app-grid-data>    
+    </div>
+    
+    <!-- Create -->
+    <div *ngIf="seleccion == 2" >        
+        <app-form-atencion titulo="Editar Cliente" ></app-form-atencion>
+    </div >
+    <!-- Update -->
+    <div *ngIf="seleccion == 3" >
+        <app-form-atencion titulo="Editar Cliente" ></app-form-atencion>
+    </div>
+    <!-- Detalle -->
+    <div *ngIf="seleccion == 4" >
+        <app-detalle-cliente></app-detalle-cliente>
+    </div>
+    <!-- Delete -->
+    <div *ngIf="seleccion == 5"   >
+       <app-delete-msg></app-delete-msg>
+    </div>
+</div>

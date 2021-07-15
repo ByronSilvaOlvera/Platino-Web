@@ -41,6 +41,33 @@ const getEntity = async (req=request, res=response) => {
         })
     }
 }
+
+// BUSCAR CITA POR ID CLIENTE
+const getCitaCliente = async (req=request, res=response) => {
+    try {
+        var { id }= req.params;
+        console.log(id);
+        cita = await Cita.findOne()
+        .where('idcliente')
+        .equals(id)
+        .populate('idcliente', 'nombres apellidos')
+        .sort({fecha : -1})
+        .exec()
+
+        res.status(200).json({
+            ok:true,
+            cita     
+        });
+        
+    } catch (error) {
+        console.log('Todas cita =>Error ', error);
+        res.status(404).json({
+            ok: false,
+            msg: error
+        })
+    }
+}
+
 const getAllEntity = async (req=request, res=response) => {
     try {
         const { num, limit = 6 } = req.params;
@@ -106,5 +133,6 @@ const deleteEntity = async (req=request, res=response) => {
 }
 
 module.exports = {
-    addEntity, getAllEntity, getEntity, UpdateEntity
+    addEntity, getAllEntity, getEntity, UpdateEntity,
+    getCitaCliente
 }

@@ -7,6 +7,7 @@ Content-Type: application/json
     "fecha"     : "2021/07/14",
     "hora"      : "12:00",
     "idcita"    : "60ef0e63a790d92b0ca4f891",
+    "idcliente" : "60eff8f6cb2fbf44e8d04eda",
     "idservicio": [
         {"uid" : "60ef18d5a2089d4e80b785f7"},
         {"uid" : "60ef1934a2089d4e80b785f9"}
@@ -22,6 +23,7 @@ Content-Type: application/json
     "fecha"     : "2021/07/14",
     "hora"      : "12:00",
     "idcita"    : "60ef0ec4d972d657c4fcc698",
+    "idcliente" : "60ee8a1bb98a932cb04c7543",
     "idservicio": [
         {"uid" : "60ef1954a2089d4e80b785ff"}
     ]

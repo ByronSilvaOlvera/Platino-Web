@@ -1,0 +1,74 @@
+<div class="atencion-form" >
+<div class="cardz">
+    <h5 class="card-title">{{ titulo }} </h5>
+    <hr>
+</div>
+
+<div class="busqueda-cliente" >
+    <div class="mb-3 row">
+        <label for="category" class="col-sm-2 form-label">
+          Buscar cliente </label>
+          <div class="col-sm-10" >
+            <ng-select [items]="clientes"
+                      bindLabel="nombres"                          
+                      bindValue="_id"
+                      placeholder="Seleccione un Cliente"
+                      (change)="getOneCliente($event)"
+                       >
+            </ng-select> 
+      </div>
+
+    </div>
+</div>
+<div class="form-create">
+
+    <form [formGroup]="entidadForm" (ngSubmit)="onSubmit()"  class="form-body-cli" >
+        
+        
+        <app-input-form type="date" id="fecha" name="Fecha"
+        label="fecha"
+        [formulario] ="entidadForm"
+        placeholder="Agrega una fecha" ></app-input-form>
+
+        <app-input-form type="time" id="hora" name="Hora"
+        label="hora"
+        [formulario] ="entidadForm" 
+        placeholder="Agrega una hora" ></app-input-form>
+
+        <div class="cita row "  >
+            <div class="col-sm-2 form-label">
+                <label for="">Cita</label>
+            </div>
+            <div class="col-sm-10 cita-detalle " >
+
+                <p>Fecha: <span>{{ cita.fecha | date}}</span></p>
+                <p>Hora: <span>{{ cita.hora }}</span></p>
+                <p>ID: <span>{{ cita.idcliente.nombres! + " "+
+                    cita.idcliente.apellidos! }}</span></p>
+                
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="category" class="col-sm-2 form-label">
+              Servicio </label>
+              <div class="col-sm-10" >
+                <ng-select [items]="servicioproducto"
+                        [multiple]="true"  
+                          bindLabel="nombre"                          
+                          bindValue="_id"
+                          placeholder="Seleccione un Cliente"
+                          formControlName="idservicio" >
+                </ng-select> 
+          </div>
+    
+        </div>
+        <div class="atencion-btn" >
+            <button type="submit" class="btn btn-outline-success">Guardar</button>
+            <button type="button" class="btn btn-outline-success">Reset</button>
+
+        </div>
+
+    </form>
+</div>
+</div>    

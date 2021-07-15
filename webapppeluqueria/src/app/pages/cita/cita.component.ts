@@ -19,12 +19,16 @@ export class CitaComponent implements OnInit {
   header:HeaderGridTable [] = [];
 
   subcripcion: Subscription;
+  subcripcionpg: Subscription;
 
   constructor(private _srvMenu: ViewUxService
     , private _srventidad : CitasService) {
       // Click en el submenu
-    this.subcripcion = _srvMenu.getOption().subscribe( s => this.seleccion = s);
+    this.subcripcion = this._srvMenu.getOption().subscribe( s => this.seleccion = s);
       /// menu de opciones editar modificar eliminar
+    this.subcripcionpg = this._srvMenu.getPage().subscribe( s => {
+      this.dataGrid(1);
+    });   
   
   }
 

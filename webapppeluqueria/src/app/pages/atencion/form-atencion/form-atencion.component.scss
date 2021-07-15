@@ -1,0 +1,40 @@
+
+.atencion-form{
+    padding: 2rem;
+    .form-create{
+        padding: 2rem;
+        border: 2px solid rgba(255, 0, 0, 0.137);
+        border-radius: 2px;
+    }
+}
+
+
+.busqueda-cliente{
+    padding: 1rem;
+    border: 2px solid rgba(255, 0, 0, 0.123);
+    margin-bottom: 1rem;
+}
+
+.cita{
+    border: 2px solid rgba(255, 0, 0, 0.13);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    padding: 0.8rem 0;
+    .cita-detalle{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            align-items: center;
+        }
+    }
+}
+
+.atencion-btn{
+    padding: 1rem;
+    button{
+        width: 130px;
+        height: 40px;
+        margin-left: 1rem;
+    }
+}

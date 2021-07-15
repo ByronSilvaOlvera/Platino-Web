@@ -16,6 +16,7 @@ import { FormCitaComponent } from './cita/form-cita/form-cita.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DetalleCitaComponent } from './cita/detalle-cita/detalle-cita.component';
+import { FormAtencionComponent } from './atencion/form-atencion/form-atencion.component';
 
 
 
@@ -29,6 +30,7 @@ import { DetalleCitaComponent } from './cita/detalle-cita/detalle-cita.component
     DetalleClienteComponent,
     FormCitaComponent,
     DetalleCitaComponent,
+    FormAtencionComponent,
   ],
   imports: [
     CommonModule,

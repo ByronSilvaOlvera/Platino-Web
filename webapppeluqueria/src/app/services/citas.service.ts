@@ -33,5 +33,11 @@ export class CitasService {
     return this.http.put<ResponseCita>(url, data)
   }
 
+  /* */
+  getOneClienteId(uid:string) : Observable<ResponseCita> {
+    let url = `${this.urlbase}/cita/cliente/${uid}/`;
+    return this.http.get<ResponseCita>(url)
+  }
+
 
 }

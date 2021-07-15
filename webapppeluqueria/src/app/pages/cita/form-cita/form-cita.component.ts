@@ -73,6 +73,7 @@ export class FormCitaComponent implements OnInit {
       this.clientes = data.clientes;
     })
   }
+  
 
   initForm(status: boolean){
     if(status){

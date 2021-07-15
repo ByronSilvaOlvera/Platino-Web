@@ -39,8 +39,11 @@ Content-Type: application/json
 
 #####
 
+GET http://localhost:8092/peluqueria/api/cita/cliente/60eff8f6cb2fbf44e8d04eda/ HTTP/1.1
 
 #### OBTENER 6 CITA
+
+######
 GET http://localhost:8092/peluqueria/api/cita/all/page/1/ HTTP/1.1
 
 ####
@@ -53,7 +56,8 @@ GET http://localhost:8092/peluqueria/api/cita/all/page/4/ HTTP/1.1
 
 #### OBTENER UNA CITA
 GET http://localhost:8092/peluqueria/api/cita/one/60ef0e63a790d92b0ca4f891/ HTTP/1.1
-
+### 60ef0e63a790d92b0ca4f891
+GET http://localhost:8092/peluqueria/api/cita/one/60ef0ec4d972d657c4fcc698/ HTTP/1.1
 ######
 
 PUT http://localhost:8092/peluqueria/api/cita/edit/60ef0e63a790d92b0ca4f891/ HTTP/1.1
