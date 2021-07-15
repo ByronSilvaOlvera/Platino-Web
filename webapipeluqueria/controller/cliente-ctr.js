@@ -42,7 +42,7 @@ const getEntity = async (req=request, res=response) => {
 }
 const getAllEntity = async (req=request, res=response) => {
     try {
-        const { num, limit = 6 } = req.params;
+        const { num, limit = 10 } = req.params;
         
         clientes = await Cliente.find()
             .limit(limit * 1)

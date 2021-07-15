@@ -10,11 +10,18 @@ import { ViewUxService } from '../../services/view-ux.service';
 export class SubmenuComponent implements OnInit {
 
   subcripcion: Subscription;
+  subcripcion2: Subscription;
   constructor(private _srvMenu: ViewUxService) {
-    this.subcripcion = this._srvMenu.getMenuOption().subscribe(
+    this.subcripcion = this._srvMenu.getMenu().subscribe(
       d =>{
         this.onSeleccionMenu(-1);
       });
+      this.subcripcion2 = this._srvMenu.getOption().subscribe(
+        d => {
+          this.onSeleccionMenu(d -1 )
+        });  
+
+
    }
 
   ngOnInit(): void {
@@ -25,7 +32,7 @@ export class SubmenuComponent implements OnInit {
     //muestra el color del menu seleccionado
     this.onSeleccionMenu(num);
     // Selecciona el numero del submenu
-    this._srvMenu.addOption(num + 1 );
+    this._srvMenu.addOption(num +1 );
   }
 
 

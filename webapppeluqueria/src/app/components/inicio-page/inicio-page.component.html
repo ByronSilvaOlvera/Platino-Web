@@ -4,12 +4,13 @@
     <div class="card" style="width: 18rem;" *ngFor="let item of data"  >
         <div class="card-body">
            <div class="card-view" >
-               <span>1258</span>
-               <i ngClass=" {{ item.icon }}" ></i>
+               <span>{{ item.numero | number: '2.0-0' }}</span>
+               <i ngClass=" {{ item.icon  }}" ></i>
            </div>
            <div class="card-description">
             <h5 class="card-title">Clientes</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Numeros de clientes</h6>
+            <h6 class="card-subtitle mb-2 text-muted">
+                {{ item.subtitle }}</h6>
            </div>
         </div>
     </div>

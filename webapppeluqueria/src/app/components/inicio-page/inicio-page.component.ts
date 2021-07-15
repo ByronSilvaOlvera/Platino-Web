@@ -12,27 +12,27 @@ export class InicioPageComponent implements OnInit {
   data: CardData[] = [
     {
       icon: "fas fa-users",
-      numero : "",
+      numero : 1258,
       title: "",
-      subtitle: ""
+      subtitle: "Numeros de clientes"
     },
     {
       icon: "fas fa-users-slash",
-      numero : "",
+      numero : 1258 * 0.10,
       title: "",
-      subtitle: ""
+      subtitle: "Numeros que no visitan"
     },
     {
       icon: "fas fa-users-cog",
-      numero : "",
+      numero : 1258 * 0.3,
       title: "",
-      subtitle: ""
+      subtitle: " falta completar datos"
     },
     {
       icon: "far fa-eye",
-      numero : "",
+      numero : 1258 *0.6,
       title: "",
-      subtitle: ""
+      subtitle: "visitan"
     }
   ];
 

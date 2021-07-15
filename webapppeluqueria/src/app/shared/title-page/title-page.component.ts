@@ -19,7 +19,7 @@ export class TitlePageComponent implements OnInit {
 
     this.dia = moment().format('MMMM Do YYYY, h:mm:ss a');
 
-    this._srvMenu.getMenuOption().subscribe( m => this.menu = m )
+    this._srvMenu.getMenu().subscribe( m => this.menu = m )
 
   }
 

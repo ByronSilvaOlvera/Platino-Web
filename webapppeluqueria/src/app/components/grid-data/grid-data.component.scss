@@ -1,8 +1,8 @@
 
 .contenido-table{
-    padding: 20px;
-    border: 2px solid teal;
-    height: 98%;
+    padding: 15px;
+    //border: 2px solid rgba(0, 128, 128, 0.157);
+    height: 80%;
     
     .table-main{
         height: 65vh;
@@ -10,8 +10,9 @@
     }
     
     .table-page{
-        height: 20px;
-        padding: 15px;
+        height: 10%;
+        padding: 1rem;
+        //border: 2px solid blue;
         button{
             width: 150px;
             height: 40px;

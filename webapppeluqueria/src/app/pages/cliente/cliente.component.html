@@ -6,7 +6,9 @@
     <!-- List -->
 
     <div class="pg-cliente" *ngIf="seleccion == 1">
-        <app-grid-data></app-grid-data>    
+        <app-grid-data title="Listado de Clientes" [header]="header"
+            [table]="clientes" *ngIf="clientes.length > 0">
+        </app-grid-data>    
     </div>
     
     <!-- Create -->

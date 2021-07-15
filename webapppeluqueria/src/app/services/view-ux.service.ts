@@ -8,7 +8,7 @@ import { Observable, pipe, Subject } from 'rxjs';
 export class ViewUxService {
 
   menu: Menu={};
-  private subMenu$ = new Subject<Menu>();
+  private Menu$ = new Subject<Menu>();
   opcion: number=0;
   private opcion$ = new Subject<number>();
   
@@ -16,21 +16,25 @@ export class ViewUxService {
     
   }
 
+
+
+  // SUBMENU
   addOption(n:number){
     this.opcion = n;
     this.opcion$.next(this.opcion);
   }
-  getOption(){
+  getOption() : Observable<number>{
     return this.opcion$.asObservable();
   }
 
-  getMenuOption(){
-    return this.subMenu$.asObservable();
+  /// MENU PRINCIPAL
+  getMenu(){
+    return this.Menu$.asObservable();
   }
 
   addMenuChoose(menu:Menu){
     this.menu = menu;
-    this.subMenu$.next(this.menu);
+    this.Menu$.next(this.menu);
   }
 
 

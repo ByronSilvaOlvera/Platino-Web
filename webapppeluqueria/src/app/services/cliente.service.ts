@@ -8,15 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class ClienteService {
 
-  urlbase = 'http://localhost:8092/api/peluqueria';
+  urlbase = 'http://localhost:8092/peluqueria/api';
   constructor(private http : HttpClient) { }
 
   addEntidad(data : Cliente): Observable<ResponseCliente>{
     let url = `${this.urlbase}/cliente/add/`
     return this.http.post<ResponseCliente>(url , data);
-    // .pipe(
-    //   catchError( err => of(`Error ${err}`) )
-    // );
+    
   }
   
   getEntidad(uid: string)  {}

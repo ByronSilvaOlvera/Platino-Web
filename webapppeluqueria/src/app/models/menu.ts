@@ -14,7 +14,7 @@ export interface Menu {
 
 export interface CardData {
     icon?:  string;
-    numero?: string;
+    numero?: number;
     title?:  string;
     subtitle?:  string;
 }
