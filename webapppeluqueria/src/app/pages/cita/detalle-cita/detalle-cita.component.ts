@@ -32,6 +32,7 @@ export class DetalleCitaComponent implements OnInit {
 
   }
 
+  // cambia el esta de la cita
   onChangeCita(cita:Cita, estado:string){
     cita.estado = estado; 
     

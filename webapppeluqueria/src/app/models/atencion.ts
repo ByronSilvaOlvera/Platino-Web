@@ -16,7 +16,7 @@ export interface Atencion {
     fecha?:      Date;
     hora?:       string;
     idcita?:     string;
-    idcliente?:  string;
+    idcliente?:  IdclienteAt;
     idservicio?: Idservicio[];
     createdAt?: Date;
     updatedAt?: Date;
@@ -29,3 +29,9 @@ export interface Idservicio {
 }
 
 
+
+export interface IdclienteAt {
+    _id?:       string;
+    nombres?:   string;
+    apellidos?: string;
+}

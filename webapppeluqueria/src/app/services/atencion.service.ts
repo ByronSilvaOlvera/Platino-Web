@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AtencionResponse, Atencion } from '../models/atencion';
+import { AtencionResponse, Atencion, AtencionPage } from '../models/atencion';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,6 +17,16 @@ export class AtencionService {
     let url = `${this.urlbase}/atencion/add/`
     return this.http.post<AtencionResponse>(url , data);
     
+  }
+
+  getAllEntidad(page : number): Observable<AtencionPage>{
+    let url = `${this.urlbase}/atencion/all/page/${page}/`;
+    return this.http.get<AtencionPage>(url)
+  }
+
+  getEntidad(uid: string) : Observable<AtencionResponse> {
+    let url = `${this.urlbase}/atencion/one/${uid}/`;
+    return this.http.get<AtencionResponse>(url);
   }
 
 }

@@ -1,0 +1,33 @@
+<div class="detalle-box" >
+    <div>
+        <p class="titulo">
+            Detalle del Atencion
+        </p>
+    </div>
+    <div class="card">
+        <div class="card-title" >
+            <h5>N° {{ atencion._id }}</h5>
+            <hr>
+        </div>
+        <div class="card-division" >
+            <div class="card-left">
+                <i class="fas fa-headset"></i>
+            </div>
+            <div class="card-rigth"  >
+                <p class="card-text"><b>Cliente:</b> 
+                    {{atencion.idcliente?.nombres! 
+                    +" "+atencion.idcliente?.apellidos }} </p>
+                <p class="card-text"><b>Descripcion:</b> {{atencion.fecha}} </p>
+                <p class="card-text"><b>Fecha:</b> {{atencion.fecha!}} </p>
+                <p class="card-text"><b>Hora:</b> {{atencion.hora}} </p>
+    
+            </div>
+        </div>
+        <!-- <div class="card-box-btn" >
+            <button (click)="onChangeCita(atencion,'Asistio')" type="button" class="btn btn-outline-secondary">Asistio</button>
+            <button (click)="onChangeCita(atencion,'No asistio')" type="button" class="btn btn-outline-secondary">Anular</button>
+        </div> -->
+    </div>
+
+</div>
+

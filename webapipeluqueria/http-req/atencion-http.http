@@ -56,7 +56,7 @@ GET http://localhost:8092/peluqueria/api/atencion/all/page/3/ HTTP/1.1
 GET http://localhost:8092/peluqueria/api/atencion/all/page/4/ HTTP/1.1
 
 #### OBTENER UNA atencion
-GET http://localhost:8092/peluqueria/api/atencion/one/60ef1daf151c580b4cafceee/ HTTP/1.1
+GET http://localhost:8092/peluqueria/api/atencion/one/60f0b74287b1435fc8bdd3eb/ HTTP/1.1
 
 ######
 

@@ -1,0 +1,47 @@
+
+
+
+
+
+.detalle-box{
+    padding: 2rem;
+   .titulo{
+        font-size: 2.1rem;
+    }
+    .card{
+        padding: 2rem;
+        .card-division{
+            width: 100%;    
+            display: flex;
+            flex-direction: row;
+            // justify-content: center;
+            // align-items: center;
+            
+            .card-left{
+                width: 40%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                i{
+                    color: #4ca6a6;
+                    font-size: 8rem;
+                }
+            }
+            .card-rigth{
+                width: 50%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+}
+
+.card-box-btn{
+    padding: 1rem;
+    button{
+        width: 130px;
+        height: 40px;
+        margin-left: 1rem;
+    }
+}

@@ -6,7 +6,7 @@
     <!-- List -->
 
     <div class="pg-cliente" *ngIf="seleccion == 1">
-        <app-grid-data title="Listado de Clientes" [header]="header"
+        <app-grid-data title="Listado de Atenciones de cliente" [header]="header"
             [table]="atencion" *ngIf="atencion.length > 0">
         </app-grid-data>    
     </div>
@@ -21,7 +21,7 @@
     </div>
     <!-- Detalle -->
     <div *ngIf="seleccion == 4" >
-        <app-detalle-cliente></app-detalle-cliente>
+        <app-detalle-atencion></app-detalle-atencion>
     </div>
     <!-- Delete -->
     <div *ngIf="seleccion == 5"   >

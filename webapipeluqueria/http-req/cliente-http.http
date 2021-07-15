@@ -60,7 +60,7 @@ GET http://localhost:8092/peluqueria/api/cliente/all/page/3/ HTTP/1.1
 
 GET http://localhost:8092/peluqueria/api/cliente/all/page/4/ HTTP/1.1
 ####
-GET http://localhost:8092/peluqueria/api/cliente/one/60ee8a1bb98a932cb04c7543/ HTTP/1.1
+GET http://localhost:8092/peluqueria/api/cliente/one/60eff8f6cb2fbf44e8d04eda/ HTTP/1.1
 
 ######
 

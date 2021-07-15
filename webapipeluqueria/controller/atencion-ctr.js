@@ -24,7 +24,9 @@ const getEntity = async (req=request, res=response) => {
     try {
         const { id } = req.params;
        
-        atencion = await Atencion.findById(id);
+        atencion = await Atencion.findById(id)
+            .populate('idcliente', 'nombres apellidos')
+            .exec();
 
         res.status(200).json({
             ok:true,
@@ -48,6 +50,8 @@ const getAllEntity = async (req=request, res=response) => {
             .limit(limit * 1)
             .skip((num - 1) * limit)
             .sort({fecha : -1}) // reciente a antigua
+            .populate('idcliente', 'nombres apellidos')
+            .populate('idservicio', 'nombre')
             .exec();
 
         if( atencion.length > 0 ){    
