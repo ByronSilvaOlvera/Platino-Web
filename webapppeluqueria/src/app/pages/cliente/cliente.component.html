@@ -1,1 +1,25 @@
-<p>cliente works!</p>
+<div *ngIf="seleccion == 0" >
+    <app-inicio-page></app-inicio-page>
+</div>
+
+<div class="cliente-opciones " >
+    <!-- List -->
+
+    <div class="pg-cliente" *ngIf="seleccion == 1">
+        <div class="pg-title" >
+            <i class="far fa-hand-point-right"></i>
+            <p>Listado </p>
+        </div>
+        <app-grid-data></app-grid-data>    
+    </div>
+    
+    <!-- Create -->
+    <div *ngIf="seleccion == 2" >
+
+    </div >
+    <!-- Update -->
+    <div *ngIf="seleccion == 3" >
+
+    </div>
+    <!-- Delete -->
+</div>

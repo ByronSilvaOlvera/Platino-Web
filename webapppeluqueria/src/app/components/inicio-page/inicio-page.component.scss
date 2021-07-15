@@ -1,0 +1,33 @@
+
+
+.card{
+    background-color: #f5e8f6; //  #ecd1ee; // #e3bae5; // #daa3dd; //#d18dd5;
+}
+
+.card-view{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    color: #5daeae;
+
+
+    span{
+        font-size: 2rem;
+    }
+    i{
+        font-size: 3rem;
+    }
+}
+
+.card-box{
+
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 20px;
+
+    //border: 2px solid red;
+}

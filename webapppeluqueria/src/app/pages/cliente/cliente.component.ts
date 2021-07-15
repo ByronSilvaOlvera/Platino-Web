@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ViewUxService } from '../../services/view-ux.service';
 
 @Component({
   selector: 'app-cliente',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteComponent implements OnInit {
 
-  constructor() { }
+  subcripcion: Subscription;
+  seleccion:number=0;
+
+  constructor(private _srvMenu: ViewUxService ) { 
+    this.subcripcion = _srvMenu.getOption().subscribe( s => this.seleccion = s);
+  }
 
   ngOnInit(): void {
   }

@@ -4,6 +4,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { CitaComponent } from './cita/cita.component';
 import { AtencionComponent } from './atencion/atencion.component';
 import { ServicioComponent } from './servicio/servicio.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -16,7 +17,8 @@ import { ServicioComponent } from './servicio/servicio.component';
     ServicioComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule
   ],
   exports:[
     ClienteComponent

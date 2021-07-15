@@ -1,0 +1,64 @@
+<div class="contenido-table" *ngIf="numero.length > 0"  >
+
+    <div class="table-main"  >
+        
+        <table class="table">
+            <thead class="tb-header" >
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" *ngFor="let he of header" >First</th>                    
+                    <th scope="col">OPCIONES</th>
+                </tr>
+            </thead>
+            <tbody class="tb-body">
+                <tr *ngFor="let num of numero; let i = index" >
+                    <td >{{ i + 1 }}</td>
+                    <td >Larry the Bird</td>
+                    <td>@twitter</td>
+                    <td>@twitter</td>
+                    <td>@twitter</td>
+                    <td class="tb-option"  >
+                        <button type="button" class="btn btn-outline-info rounded-circle btn-table" 
+                        (click)="onDelete()">
+                            <i class="fas fa-info"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger rounded-circle btn-table"
+                            (click)="onDelete()">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger rounded-circle btn-table"
+                            (click)="onDelete()">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+
+
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-page">
+        <button type="button" class="btn btn-outline-info">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button type="button" class="btn btn-outline-info">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+        
+    </div>
+</div>
+
+
+<div class="contenido-msg" *ngIf="numero.length == 0"  >
+    <div class="db" >
+        <i class="fas fa-database"></i>
+    </div>
+    <div class="db-text" >
+        <p> No existen Cliente 
+            <i class="fas fa-users"></i>
+        </p>
+    </div>
+
+
+</div>

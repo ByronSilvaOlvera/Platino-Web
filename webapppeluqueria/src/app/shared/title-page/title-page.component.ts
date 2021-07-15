@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { ViewUxService } from '../../services/view-ux.service';
+import { Menu } from '../../models/menu';
 
 @Component({
   selector: 'app-title-page',
@@ -8,13 +10,17 @@ import * as moment from 'moment';
 })
 export class TitlePageComponent implements OnInit {
 
-  @Input() namepage:string ='';
   @Input() id:number =0;
-  @Input() iconheader : string='fas fa-archive';
+
+  menu:Menu = {};
   dia: string ;
   
-  constructor() { 
+  constructor(private _srvMenu: ViewUxService) { 
+
     this.dia = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+    this._srvMenu.getMenuOption().subscribe( m => this.menu = m )
+
   }
 
   ngOnInit(): void {

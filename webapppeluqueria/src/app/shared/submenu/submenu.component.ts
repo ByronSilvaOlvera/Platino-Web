@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ViewUxService } from '../../services/view-ux.service';
 
 @Component({
   selector: 'app-submenu',
@@ -7,13 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmenuComponent implements OnInit {
 
-  constructor() { }
+  subcripcion: Subscription;
+  constructor(private _srvMenu: ViewUxService) {
+    this.subcripcion = this._srvMenu.getMenuOption().subscribe(
+      d =>{
+        this.onSeleccionMenu(-1);
+      });
+   }
 
   ngOnInit(): void {
 
   }
 
   cmbClick(num:number){
+    //muestra el color del menu seleccionado
+    this.onSeleccionMenu(num);
+    // Selecciona el numero del submenu
+    this._srvMenu.addOption(num + 1 );
+  }
+
+
+  onSeleccionMenu(num:number){
     var obj = document.querySelectorAll('.body div');  
 
     obj?.forEach( (b, i) => {
@@ -36,7 +52,7 @@ export class SubmenuComponent implements OnInit {
       }
       
     });
-
+  
   }
 
 }
