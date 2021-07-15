@@ -33,6 +33,11 @@ export class SubmenuComponent implements OnInit {
     this.onSeleccionMenu(num);
     // Selecciona el numero del submenu
     this._srvMenu.addOption(num +1 );
+
+    setTimeout(() => {
+      this._srvMenu.addUId('');
+    },1000)
+    
   }
 
 

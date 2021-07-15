@@ -29,6 +29,9 @@ export class ClienteService {
     return this.http.get<PaginacionCliente>(url)
   }
   
-  updateEntidad(data: Cliente){}
+  updateEntidad(data: Cliente, uid:string) : Observable<ResponseCliente>  {
+    let url = `${this.urlbase}/cliente/edit/${uid}/`;
+    return this.http.put<ResponseCliente>(url, data)
+  }
 
 }
