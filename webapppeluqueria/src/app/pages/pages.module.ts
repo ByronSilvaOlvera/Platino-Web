@@ -7,6 +7,7 @@ import { ServicioComponent } from './servicio/servicio.component';
 import { ComponentsModule } from '../components/components.module';
 import { FormClienteComponent } from './cliente/form-cliente/form-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetalleClienteComponent } from './cliente/detalle-cliente/detalle-cliente.component';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AtencionComponent,
     ServicioComponent,
     FormClienteComponent,
+    DetalleClienteComponent,
   ],
   imports: [
     CommonModule,

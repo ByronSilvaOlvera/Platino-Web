@@ -1,0 +1,20 @@
+
+
+.delete-msg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 8rem;
+
+    div i {
+        font-size: 8rem;
+        color: #f4248c;
+    }
+    
+    div p{
+        font-size: 2rem;
+        color: #f4248c;
+    }
+}

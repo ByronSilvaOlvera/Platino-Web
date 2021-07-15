@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class FormClienteComponent implements OnInit {
 
   entidadForm  : FormGroup  ;
+  @Input() titulo:string = "";
+  
   constructor(private fb: FormBuilder ) {
     this.entidadForm = this.initForm(false)
    }

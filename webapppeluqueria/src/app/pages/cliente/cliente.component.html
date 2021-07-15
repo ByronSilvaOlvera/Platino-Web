@@ -6,20 +6,23 @@
     <!-- List -->
 
     <div class="pg-cliente" *ngIf="seleccion == 1">
-        <div class="pg-title" >
-            <i class="far fa-hand-point-right"></i>
-            <p>Listado </p>
-        </div>
         <app-grid-data></app-grid-data>    
     </div>
     
     <!-- Create -->
     <div *ngIf="seleccion == 2" >
-        <app-form-cliente></app-form-cliente>
+        <app-form-cliente titulo="Nuevo Cliente" ></app-form-cliente>
     </div >
     <!-- Update -->
     <div *ngIf="seleccion == 3" >
-
+        <app-form-cliente titulo="Editar Cliente" ></app-form-cliente>
+    </div>
+    <!-- Detalle -->
+    <div *ngIf="seleccion == 4" >
+        <app-detalle-cliente></app-detalle-cliente>
     </div>
     <!-- Delete -->
+    <div *ngIf="seleccion == 5"   >
+       <app-delete-msg></app-delete-msg>
+    </div>
 </div>
