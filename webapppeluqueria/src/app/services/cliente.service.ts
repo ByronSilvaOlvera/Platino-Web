@@ -28,6 +28,11 @@ export class ClienteService {
     let url = `${this.urlbase}/cliente/all/page/${page}/`;
     return this.http.get<PaginacionCliente>(url)
   }
+
+  getAllEntidadOK(): Observable<PaginacionCliente>{
+    let url = `${this.urlbase}/cliente/all/`;
+    return this.http.get<PaginacionCliente>(url)
+  }
   
   updateEntidad(data: Cliente, uid:string) : Observable<ResponseCliente>  {
     let url = `${this.urlbase}/cliente/edit/${uid}/`;

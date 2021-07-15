@@ -1,0 +1,31 @@
+<div class="detalle-box" >
+    <div>
+        <p class="titulo">
+            Detalle del Cita
+        </p>
+    </div>
+    <div class="card">
+        <div class="card-title" >
+            <h5>N° {{ cita._id }}</h5>
+            <hr>
+        </div>
+        <div class="card-division" >
+            <div class="card-left">
+                <i class="fas fa-headset"></i>
+            </div>
+            <div class="card-rigth"  >
+                <p class="card-text"><b>Cliente:</b> {{cita.idcliente.nombres! +" "+cita.idcliente.apellidos! }} </p>
+                <p class="card-text"><b>Descripcion:</b> {{cita.descripcion}} </p>
+                <p class="card-text"><b>Fecha:</b> {{cita.fecha!}} </p>
+                <p class="card-text"><b>Hora:</b> {{cita.hora}} </p>
+                <p class="card-text"><b>Estado:</b> {{cita.estado}} </p>
+    
+            </div>
+        </div>
+        <div class="card-box-btn" >
+            <button (click)="onChangeCita(cita,'Asistio')" type="button" class="btn btn-outline-secondary">Asistio</button>
+            <button (click)="onChangeCita(cita,'No asistio')" type="button" class="btn btn-outline-secondary">Anular</button>
+        </div>
+    </div>
+
+</div>

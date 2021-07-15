@@ -17,4 +17,5 @@ export interface CardData {
     numero?: number;
     title?:  string;
     subtitle?:  string;
+    tipo?:  string;
 }

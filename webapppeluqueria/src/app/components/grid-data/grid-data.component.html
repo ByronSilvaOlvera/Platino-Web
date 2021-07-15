@@ -48,10 +48,17 @@
         </table>
     </div>
     <div class="table-page">
-        <button type="button" class="btn btn-outline-info">
+        <button type="button" class="btn btn-outline-info"
+         (click)="onPageNegativa()" >
             <i class="fas fa-arrow-left"></i>
         </button>
-        <button type="button" class="btn btn-outline-info">
+
+        <button type="button" class="btn btn-primary">
+            Pagina <span class="badge bg-secondary">{{ page }}</span>
+        </button>
+
+        <button type="button" class="btn btn-outline-info"
+         (click)="onPagePositiva()" >
             <i class="fas fa-arrow-right"></i>
         </button>
         

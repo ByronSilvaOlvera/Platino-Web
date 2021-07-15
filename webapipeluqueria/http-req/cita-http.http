@@ -23,9 +23,23 @@ Content-Type: application/json
     "estado"     : "Pendiente",
     "idcliente"  : "60ee8a1bb98a932cb04c7543"
 }
+######
+
+POST http://localhost:8092/peluqueria/api/cita/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "fecha"      : "2021/07/15",
+    "hora"       : "12:00",
+    "descripcion": "maniqui",
+    "estado"     : "Pendiente",
+    "idcliente"  : "60eff8f6cb2fbf44e8d04eda"
+}
 
 
 #####
+
+
 #### OBTENER 6 CITA
 GET http://localhost:8092/peluqueria/api/cita/all/page/1/ HTTP/1.1
 

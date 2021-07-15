@@ -1,0 +1,63 @@
+
+
+<div class="form-cita" >
+
+    <div class="cardz">
+        <h5 class="card-title">{{ titulo }} </h5>
+        <hr>
+    </div>
+
+    <form [formGroup]="entidadForm" (ngSubmit)="onSubmit()"  class="form-body-cli" >
+        
+        <div class="mb-3 row">
+            <label for="category" class="col-sm-2 form-label">
+              Cliente </label>
+              <div class="col-sm-10" >
+                <ng-select [items]="clientes"
+                          bindLabel="nombres"                          
+                          bindValue="_id"
+                          placeholder="Seleccione un Cliente"
+                          formControlName="idcliente" >
+                </ng-select> 
+          </div>
+        </div>
+        
+        
+        <app-input-form type="date" id="fecha" name="Fecha"
+        label="fecha"
+        [formulario] ="entidadForm"
+        placeholder="Agrega una fecha" ></app-input-form>
+
+        <app-input-form type="time" id="hora" name="Hora"
+        label="hora"
+        [formulario] ="entidadForm"
+        placeholder="Agrega una hora" ></app-input-form>
+
+        <app-input-form type="text" id="descripcion" name="descripcion"
+        label="descripcion"
+        [formulario] ="entidadForm"
+        placeholder="Agrega una descripcion" ></app-input-form>
+
+        <div class="mb-3 row">
+            <label for="category" class="col-sm-2 form-label">
+              Estado </label>
+              <div class="col-sm-10" >
+                <ng-select [items]="estado"
+                          bindLabel="estado"                          
+                          bindValue="id"
+                          placeholder="Seleccione un Cliente"
+                          formControlName="estado" >
+                </ng-select> 
+          </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-outline-success">Guardar</button>
+            <button type="button" class="btn btn-outline-secondary">Borrar</button>
+
+        </div>
+
+
+    </form>
+
+</div>

@@ -40,9 +40,31 @@ const getEntity = async (req=request, res=response) => {
         })
     }
 }
+
+const getAllEntityOk = async (req=request, res=response) => {
+    try {
+        
+        clientes = await Cliente.find().exec();
+
+        if( clientes.length > 0 ){    
+            res.status(200).json({
+                ok:true,
+                clientes
+            });
+        }else{
+            res.status(200).json({
+                ok:false,
+                msg:'No contiene Clientes'                
+            });
+        }
+
+    } catch (error) {
+        console.log('Error ', error);
+    }
+}
 const getAllEntity = async (req=request, res=response) => {
     try {
-        const { num, limit = 10 } = req.params;
+        const { num, limit = 10  } = req.params;
         
         clientes = await Cliente.find()
             .limit(limit * 1)
@@ -99,5 +121,7 @@ const deleteEntity = async (req=request, res=response) => {
 }
 
 module.exports = {
-    addEntity, getAllEntity, getEntity, UpdateEntity, deleteEntity
+    addEntity, getAllEntity, getEntity, 
+    getAllEntityOk,
+    UpdateEntity, deleteEntity
 }

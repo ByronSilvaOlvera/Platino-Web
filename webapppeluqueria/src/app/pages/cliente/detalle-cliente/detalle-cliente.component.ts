@@ -18,6 +18,7 @@ export class DetalleClienteComponent implements OnInit {
 
   constructor(private _srvMenu: ViewUxService,
     private _srvcliente: ClienteService) { 
+
     this.subcripcion = this._srvMenu.getUId().subscribe( d => {
       this.uid = d;
       //console.log(d);
@@ -35,6 +36,10 @@ export class DetalleClienteComponent implements OnInit {
     });
 
   }
+
+
+
+
 
     buscarCliente(uid:string){
       this._srvcliente.getEntidad(uid).subscribe( data => 

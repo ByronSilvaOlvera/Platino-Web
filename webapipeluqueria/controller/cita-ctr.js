@@ -24,7 +24,9 @@ const getEntity = async (req=request, res=response) => {
     try {
         const { id } = req.params;
        
-        cita = await Cita.findById(id);
+        cita = await Cita.findById(id)
+        .populate('idcliente', 'nombres apellidos')
+        .exec();
 
         res.status(200).json({
             ok:true,
@@ -46,6 +48,8 @@ const getAllEntity = async (req=request, res=response) => {
         citas = await Cita.find()
             .limit(limit * 1)
             .skip((num - 1) * limit)
+            .populate('idcliente', 'nombres apellidos')
+            .sort({fecha : -1})
             .exec();
 
         if( citas.length > 0 ){    
@@ -72,7 +76,7 @@ const getAllEntity = async (req=request, res=response) => {
 const UpdateEntity = async (req=request, res=response) => {
     try {
         const { id } = req.params;
-        const cita  = req.body;
+        const { _id , ...cita }  = req.body;
 
         const response = await Cita.findOneAndUpdate(
              { _id: id },

@@ -16,8 +16,22 @@ export class ViewUxService {
   private uid:string='';
   private clienteUid$ = new Subject<string>();
 
+  private pages:number=1;
+  private pagesUid$ = new Subject<number>();
+
   constructor() { 
     
+  }
+
+
+  // PAGES
+
+  addPage(n:number){
+    this.pages = n;
+    this.pagesUid$.next(this.pages);
+  }
+  getPage(): Observable<number>{
+    return this.pagesUid$.asObservable();
   }
 
 

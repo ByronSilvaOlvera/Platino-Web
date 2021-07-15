@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GridTb, GridTable, HeaderGridTable } from '../../models/grid-table';
 import { ViewUxService } from '../../services/view-ux.service';
+import { ClienteService } from '../../services/cliente.service';
 
 @Component({
   selector: 'app-grid-data',
@@ -11,6 +12,7 @@ export class GridDataComponent implements OnInit {
 
   @Input() table:GridTable [] = [];
   @Input() header:HeaderGridTable [] = [];
+  page:number= 1;
   
 
   @Input() title:string = "";
@@ -22,6 +24,25 @@ export class GridDataComponent implements OnInit {
   ngOnInit(): void {
 
     
+  }
+
+  onPagePositiva(){
+   // subcripcion 
+   this._srvMenu.addPage(this.page++);
+   console.log(this.page);
+   
+  }
+  onPageNegativa(){
+    // subcripcion 
+    this._srvMenu.getPage().subscribe(d => {
+
+      console.log(this.page);
+      if(this.page > 1){
+        console.log(this.page);
+        this._srvMenu.addPage(this.page--);
+      }
+    })
+ 
   }
 
   onDelete(uid:string){
