@@ -28,14 +28,20 @@ export class GridDataComponent implements OnInit {
     console.log(uid);
     // ir opciion eliminar
     this._srvMenu.addOption(5);
-
+    //this._srvMenu.addUId(uid);
+    
     
   }
   onDetalle(uid:string){
     console.log(uid);
     // ir opcion detalle
     this._srvMenu.addOption(4);
-
+    
+    setTimeout( () => {
+      this._srvMenu.addUId(uid);
+    }
+    ,1000)
+    
     // subcripcion id
     
   }
@@ -43,8 +49,9 @@ export class GridDataComponent implements OnInit {
     console.log(uid);
     // ir opciion editar
     this._srvMenu.addOption(3);
-
-
+    setTimeout( () => {
+      this._srvMenu.addUId(uid);
+    }, 1000)
     
   }
 

@@ -9,13 +9,28 @@ export class ViewUxService {
 
   menu: Menu={};
   private Menu$ = new Subject<Menu>();
+
   opcion: number=0;
   private opcion$ = new Subject<number>();
   
+  private uid:string='';
+  private clienteUid$ = new Subject<string>();
+
   constructor() { 
     
   }
 
+
+  /// UID
+
+  addUId(uid:string){
+    this.uid = uid;
+    this.clienteUid$.next(this.uid);
+  }
+  
+  getUId() : Observable<string> {
+    return this.clienteUid$.asObservable();
+  }
 
 
   // SUBMENU

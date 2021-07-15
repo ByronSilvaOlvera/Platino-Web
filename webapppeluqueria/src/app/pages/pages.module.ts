@@ -8,6 +8,7 @@ import { ComponentsModule } from '../components/components.module';
 import { FormClienteComponent } from './cliente/form-cliente/form-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetalleClienteComponent } from './cliente/detalle-cliente/detalle-cliente.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -24,7 +25,8 @@ import { DetalleClienteComponent } from './cliente/detalle-cliente/detalle-clien
   imports: [
     CommonModule,
     ComponentsModule,
-    //FormsModule,
+    BrowserModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   exports:[

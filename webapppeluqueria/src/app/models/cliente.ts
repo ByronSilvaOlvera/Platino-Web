@@ -5,17 +5,17 @@ export interface ResponseCliente {
 }
 
 export interface Cliente {
-    _id:            string;
-    nombres:        string;
-    apellidos:      string;
-    identificacion: string;
-    telefono:       string;
-    email:          string;
-    direccion:      string;
-    fechanacio:     Date;
-    createdAt:      Date;
-    updatedAt:      Date;
-    __v:            number;
+    _id?:            string;
+    nombres?:        string;
+    apellidos?:      string;
+    identificacion?: string;
+    telefono?:       string;
+    email?:          string;
+    direccion?:      string;
+    fechanacio?:     Date;
+    createdAt?:      Date;
+    updatedAt?:      Date;
+    __v?:            number;
 }
 
 
