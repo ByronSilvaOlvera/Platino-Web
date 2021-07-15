@@ -1,0 +1,46 @@
+<div class="form-main-cli" >
+    <div class="cardz">
+        <h5 class="card-title">Nuevo Cliente </h5>
+        <hr>
+    </div>
+
+    <form [formGroup]="entidadForm" class="form-body-cli" >
+        <app-input-form type="text" id="nombres" name="Nombres"
+        label="nombres"
+        [formulario] ="entidadForm"
+        placeholder="Agrega sus nombres" ></app-input-form>
+
+        <app-input-form type="text" id="apellidos" name="Apellidos"
+        [formulario]="entidadForm" label="apellidos"
+        placeholder="Agrega sus apellidos" ></app-input-form>
+
+        <app-input-form type="text" id="identificacion" name="Identidad"
+        [formulario]="entidadForm" label="identificacion"
+        placeholder="Agrega su Identidad" ></app-input-form>
+
+        <app-input-form type="text" id="telefono" name="telefono"
+        [formulario]="entidadForm" label="telefono"
+        placeholder="Agrega su Telefono" ></app-input-form>
+
+        <app-input-form type="text" id="email" name="Email"
+        [formulario]="entidadForm" label="email"
+        placeholder="Agrega sus correo" ></app-input-form>
+
+        <app-input-form type="text" id="direccion" name="Direccion"
+        [formulario]="entidadForm" label="direccion"
+        placeholder="Agrega sus lugar donde localizarlo" ></app-input-form>
+
+        <app-input-form type="date" id="fechanacio" name="Fecha"
+        [formulario]="entidadForm" label="fechanacio"
+        placeholder="Agrega sus dia mes año? nació" ></app-input-form>
+
+        <div class="form-btn">
+            <button type="button" class="btn btn-outline-success"
+                (click)="onSaveEntidad()"
+            >Guardar</button>
+
+            <button type="button" class="btn btn-outline-secondary">Borrar</button>
+        </div>
+        
+    </form>
+</div>

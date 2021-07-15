@@ -10,7 +10,7 @@ import { ViewUxService } from '../../services/view-ux.service';
 export class ClienteComponent implements OnInit {
 
   subcripcion: Subscription;
-  seleccion:number=0;
+  seleccion:number=2;
 
   constructor(private _srvMenu: ViewUxService ) { 
     this.subcripcion = _srvMenu.getOption().subscribe( s => this.seleccion = s);

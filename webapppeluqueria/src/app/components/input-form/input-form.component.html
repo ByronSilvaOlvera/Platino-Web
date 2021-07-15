@@ -1,0 +1,17 @@
+<div class="mb-3 row">
+    <label for="nombres" class="col-sm-2 form-label">
+      {{name}} </label>
+      <div class="col-sm-10" [formGroup]="formulario"  >
+
+        <input 
+        [type]="type" 
+        class=" form-control" 
+        [id]="id"
+        [placeholder]="placeholder"
+        [formControlName]="label"
+        >
+      </div>
+        <div *ngIf="false" class="text-danger">
+            Please provide a valid .
+        </div>
+  </div>

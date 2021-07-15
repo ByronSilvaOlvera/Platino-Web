@@ -5,6 +5,8 @@ import { CitaComponent } from './cita/cita.component';
 import { AtencionComponent } from './atencion/atencion.component';
 import { ServicioComponent } from './servicio/servicio.component';
 import { ComponentsModule } from '../components/components.module';
+import { FormClienteComponent } from './cliente/form-cliente/form-cliente.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,10 +17,13 @@ import { ComponentsModule } from '../components/components.module';
     CitaComponent,
     AtencionComponent,
     ServicioComponent,
+    FormClienteComponent,
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    //FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     ClienteComponent
