@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ClienteService } from '../../../services/cliente.service';
 import { Cliente } from 'src/app/models/cliente';
 import * as moment from 'moment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -24,17 +25,21 @@ export class FormClienteComponent implements OnInit {
   constructor(private fb: FormBuilder 
     ,private _srvMenu: ViewUxService
     ,private _srvcliente: ClienteService
+    ,private spinner : NgxSpinnerService 
     ) {
       this.entidadForm = this.initForm(false)
       this.subcripcion = this._srvMenu.getUId().subscribe(d => {
         this.uid = d;
+        this.spinner.show();
         if( d.length > 0 ){
           this._srvcliente.getEntidad(d).subscribe( data => {
             this.cliente = data.cliente;
             this.initForm(true);
+            this.spinner.hide();
           })
         }
         else{
+          this.spinner.hide();
           this.initForm(false);
         }
       })

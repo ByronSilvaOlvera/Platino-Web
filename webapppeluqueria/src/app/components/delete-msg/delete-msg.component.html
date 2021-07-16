@@ -1,11 +1,11 @@
 
 <div class="delete-msg">
     <div>
-        <i class="fas fa-exclamation-circle"></i>
+        <i [ngClass]="iconclass+' '+color "></i>
     </div>
-    <div>
+    <div [ngClass]="colormsg " >
         <p class="delete-msg">
-            No tiene Autorizacion para eliminar un Cliente
+            {{ msg }}
         </p>
     </div>
 </div>

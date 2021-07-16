@@ -4,6 +4,7 @@ import { ViewUxService } from '../../services/view-ux.service';
 import { Cliente } from '../../models/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { GridTb, GridTable, HeaderGridTable } from '../../models/grid-table';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-cliente',
@@ -21,10 +22,14 @@ export class ClienteComponent implements OnInit {
   page:number=1;
 
   constructor(private _srvMenu: ViewUxService 
-    , private _srventidad : ClienteService) { 
+    , private _srventidad : ClienteService
+    ,private spinner: NgxSpinnerService) { 
      
      // SUB MENU
-    this.subcripcion = _srvMenu.getOption().subscribe( s => this.seleccion = s);
+    this.subcripcion = _srvMenu.getOption().subscribe( s => {
+      this.seleccion = s
+      this.spinner.hide();
+    });
     // Paginacion 
     this.subcripcion2 = _srvMenu.getPage().subscribe( p => 
       {
@@ -41,6 +46,7 @@ export class ClienteComponent implements OnInit {
   }
 
   dataGrid(p:number){
+    this.spinner.show();
     this._srventidad.getAllEntidad(p).subscribe(
       data => {
         if(data.ok ){
@@ -53,11 +59,13 @@ export class ClienteComponent implements OnInit {
               uid    : x._id
             })
           })
+          this.spinner.hide();
         }else{
           console.log('No hay Data');
           //this.clientes = [];
           // resta xq pagima fue sumada en el grid-data
           this._srvMenu.addPage(p--);
+          this.spinner.hide();
         }
         
       }

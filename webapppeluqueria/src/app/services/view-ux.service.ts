@@ -19,9 +19,23 @@ export class ViewUxService {
   private pages:number=1;
   private pagesUid$ = new Subject<number>();
 
+  private ruta:string="";
+  private rutaLink$ = new Subject<string>();
+
   constructor() { 
     
   }
+
+  // Ruta
+
+  addRuta(n:string){
+    this.ruta = n;
+    this.rutaLink$.next(this.ruta);
+  }
+  getRuta(): Observable<string>{
+    return this.rutaLink$.asObservable();
+  }
+
 
 
   // PAGES
@@ -57,7 +71,7 @@ export class ViewUxService {
   }
 
   /// MENU PRINCIPAL
-  getMenu(){
+  getMenu() : Observable<Menu> {
     return this.Menu$.asObservable();
   }
 

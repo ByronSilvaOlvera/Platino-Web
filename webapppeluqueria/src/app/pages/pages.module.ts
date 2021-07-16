@@ -19,7 +19,8 @@ import { DetalleCitaComponent } from './cita/detalle-cita/detalle-cita.component
 import { FormAtencionComponent } from './atencion/form-atencion/form-atencion.component';
 import { DetalleAtencionComponent } from './atencion/detalle-atencion/detalle-atencion.component';
 
-
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { DetalleAtencionComponent } from './atencion/detalle-atencion/detalle-at
     DetalleAtencionComponent,
   ],
   imports: [
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
     CommonModule,
     ComponentsModule,
     BrowserModule,

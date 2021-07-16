@@ -1,18 +1,21 @@
-
-<div class="card-box "  >
-
-    <div class="card" style="width: 18rem;" *ngFor="let item of data"  >
-        <div class="card-body">
-           <div class="card-view" >
-               <span>{{ item.numero | number: '2.0-0' }}</span>
-               <i ngClass=" {{ item.icon  }}" ></i>
-           </div>
-           <div class="card-description">
-            <h5 class="card-title">{{ item.tipo | uppercase }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-                {{ item.subtitle }}</h6>
-           </div>
+<div class="inicio-contenido">
+  <div class="card-box">
+    <div class="card" style="width: 18rem" *ngFor="let item of data">
+      <div class="card-body">
+        <div class="card-view">
+          <span>{{ item.numero | number: "2.0-0" }}</span>
+          <i ngClass=" {{ item.icon }}"></i>
         </div>
+        <div class="card-description">
+          <h5 class="card-title">{{ item.tipo | uppercase }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ item.subtitle }}
+          </h6>
+        </div>
+      </div>
     </div>
-
+  </div>
+  <div class="card estadistica-page" *ngIf="data.length > 0">
+    <h5 class="card-title">Estadisticas de {{ name }}</h5>
+  </div>
 </div>

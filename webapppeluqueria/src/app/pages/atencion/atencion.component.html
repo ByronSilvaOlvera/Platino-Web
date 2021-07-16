@@ -17,7 +17,7 @@
     </div >
     <!-- Update -->
     <div *ngIf="seleccion == 3" >
-        <app-form-atencion titulo="Editar Cliente" ></app-form-atencion>
+        <app-delete-msg iconclass="far fa-times-circle" ></app-delete-msg>
     </div>
     <!-- Detalle -->
     <div *ngIf="seleccion == 4" >
@@ -28,3 +28,5 @@
        <app-delete-msg></app-delete-msg>
     </div>
 </div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-fussion" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

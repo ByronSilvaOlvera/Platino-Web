@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GridTb, GridTable, HeaderGridTable } from '../../models/grid-table';
 import { ViewUxService } from '../../services/view-ux.service';
 import { ClienteService } from '../../services/cliente.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-grid-data',
@@ -19,7 +20,8 @@ export class GridDataComponent implements OnInit {
   numero : number [] = []; // [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   //header : number [] = [1,2,3,4];
 
-  constructor(private _srvMenu: ViewUxService) { }
+  constructor(private _srvMenu: ViewUxService
+    ,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
 
@@ -46,7 +48,7 @@ export class GridDataComponent implements OnInit {
   }
 
   onDelete(uid:string){
-    console.log(uid);
+    //console.log(uid);
     // ir opciion eliminar
     this._srvMenu.addOption(5);
     //this._srvMenu.addUId(uid);
@@ -54,10 +56,11 @@ export class GridDataComponent implements OnInit {
     
   }
   onDetalle(uid:string){
-    console.log(uid);
+    //console.log(uid);
     // ir opcion detalle
     this._srvMenu.addOption(4);
-    
+
+    this.spinner.show();
     setTimeout( () => {
       this._srvMenu.addUId(uid);
     }
@@ -67,9 +70,11 @@ export class GridDataComponent implements OnInit {
     
   }
   onEditar(uid:string){
-    console.log(uid);
+    //console.log(uid);
     // ir opciion editar
+    
     this._srvMenu.addOption(3);
+    this.spinner.show();
     setTimeout( () => {
       this._srvMenu.addUId(uid);
     }, 1000)

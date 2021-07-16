@@ -12,10 +12,13 @@ export class SubmenuComponent implements OnInit {
   subcripcion: Subscription;
   subcripcion2: Subscription;
   constructor(private _srvMenu: ViewUxService) {
+
+    /// BORRA EL FOCO SUBMENU cick en el menu principal
     this.subcripcion = this._srvMenu.getMenu().subscribe(
       d =>{
         this.onSeleccionMenu(-1);
       });
+      /// DA FOCO DE SELECCION click en el sub menu
       this.subcripcion2 = this._srvMenu.getOption().subscribe(
         d => {
           this.onSeleccionMenu(d -1 )
@@ -28,19 +31,24 @@ export class SubmenuComponent implements OnInit {
 
   }
 
+  // click List add Edit View Delete
   cmbClick(num:number){
     //muestra el color del menu seleccionado
     this.onSeleccionMenu(num);
     // Selecciona el numero del submenu
     this._srvMenu.addOption(num +1 );
 
-    setTimeout(() => {
-      this._srvMenu.addUId('');
-    },1000)
+    /// SI VOY A CREAR UN OBJETO
+    if(num === 1){
+      setTimeout(() => {
+        this._srvMenu.addUId('');
+      },1000)
+    }
     
   }
 
 
+  // da foco a los menus 
   onSeleccionMenu(num:number){
     var obj = document.querySelectorAll('.body div');  
 

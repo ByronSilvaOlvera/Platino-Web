@@ -12,6 +12,8 @@ const routes: Routes = [
   {path : 'cita' , component : CitaComponent, },
   {path : 'atencion' , component : AtencionComponent, },
   {path : 'servicio' , component : ServicioComponent, },
+  //{ path: '',   redirectTo: '/cliente', pathMatch: 'full' }, 
+  //{ path: '**', component: HomeComponent },
 
 ];
 

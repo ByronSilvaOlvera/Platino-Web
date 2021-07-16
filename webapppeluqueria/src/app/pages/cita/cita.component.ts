@@ -4,6 +4,7 @@ import { ViewUxService } from '../../services/view-ux.service';
 import { Subscription } from 'rxjs';
 import { CitasService } from '../../services/citas.service';
 import * as moment from 'moment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class CitaComponent implements OnInit {
   subcripcionpg: Subscription;
 
   constructor(private _srvMenu: ViewUxService
-    , private _srventidad : CitasService) {
+    , private _srventidad : CitasService
+    ,private spinner: NgxSpinnerService) {
       // Click en el submenu
     this.subcripcion = this._srvMenu.getOption().subscribe( s => this.seleccion = s);
       /// menu de opciones editar modificar eliminar
@@ -30,26 +32,41 @@ export class CitaComponent implements OnInit {
       this.dataGrid(1);
     });   
   
+    
+
   }
 
   ngOnInit(): void {
     this.createHeader();
     this.dataGrid(1);
+    
+    //console.log(this.router.url);
   }
 
   dataGrid(p:number){
+    this.spinner.show();
     this._srventidad.getAllEntidad(1).subscribe(data => {
-      console.log(data);
       
-      data.citas.forEach( x => {
-        this.citas.push({
-          campo1 : x.idcliente.nombres! + " "+x.idcliente.apellidos!,
-          campo2 : moment(x.fecha,"YYYY/MM/DD").format("YYYY/MM/DD"),
-          campo3 : x.hora,
-          uid : x._id
+      if(data.ok){         
+        data.citas.forEach( x => {
+          this.citas.push({
+            campo1 : x.idcliente.nombres! + " "+x.idcliente.apellidos!,
+            campo2 : moment(x.fecha,"YYYY/MM/DD").format("YYYY/MM/DD"),
+            campo3 : x.hora,
+            uid : x._id
+          })
+          
         })
+        this.spinner.hide();
+      }else{
+        
+        this.spinner.hide();
+      }
 
-      })
+
+    }, err => {
+      console.log(err);
+      
     })
   }
 

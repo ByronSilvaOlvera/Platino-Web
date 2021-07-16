@@ -45,6 +45,7 @@ export class FormCitaComponent implements OnInit {
 
   onSubmit(){
     //console.log(this.entidadForm.value);
+    
     this.onSave();
     
   }
@@ -60,6 +61,9 @@ export class FormCitaComponent implements OnInit {
           console.log('error al Guardar');
           
         }
+      }, err => {
+        console.log(err);
+        
       })
     }else{
       console.log('Error');

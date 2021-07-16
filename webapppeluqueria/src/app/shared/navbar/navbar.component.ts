@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from '../../models/menu';
 import { ViewUxService } from '../../services/view-ux.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -37,11 +38,28 @@ export class NavbarComponent implements OnInit {
     }
   ]
   
+  subcripcion: Subscription;
 
-  constructor(private _srvMenu: ViewUxService) { }
+  constructor(private _srvMenu: ViewUxService) {
+    this.subcripcion = this._srvMenu.getRuta().subscribe(
+      data =>{
+        this.completeMenu(data);
+      }
+    )
+   }
 
   ngOnInit(): void {
 
+  }
+
+  completeMenu(link:string){
+    let menu= {}; 
+    let num = -1;
+    this.menus.filter((x, i) => {
+      if(x.link === link){ menu = x; num = i  }
+    });
+
+    this.chooseMenu(menu,num);
   }
 
   chooseMenu(menu: Menu, num : number){

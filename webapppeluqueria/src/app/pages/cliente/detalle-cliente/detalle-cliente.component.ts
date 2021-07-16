@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ViewUxService } from '../../../services/view-ux.service';
 import { Cliente } from '../../../models/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -17,7 +18,8 @@ export class DetalleClienteComponent implements OnInit {
   uid:string='';
 
   constructor(private _srvMenu: ViewUxService,
-    private _srvcliente: ClienteService) { 
+    private _srvcliente: ClienteService
+    ,private spinner: NgxSpinnerService) { 
 
     this.subcripcion = this._srvMenu.getUId().subscribe( d => {
       this.uid = d;
@@ -32,22 +34,24 @@ export class DetalleClienteComponent implements OnInit {
             this.b = true;
           })
           //this.buscarCliente(d);
+          this.spinner.hide();
+        }else{
+          this.spinner.hide();
+
         }
     });
 
   }
 
-
-
-
-
     buscarCliente(uid:string){
+      this.spinner.show();
       this._srvcliente.getEntidad(uid).subscribe( data => 
         {
           this.cliente = data.cliente 
           console.log(data.cliente);
           
           this.b = true;
+          this.spinner.hide()
         })
     
     }

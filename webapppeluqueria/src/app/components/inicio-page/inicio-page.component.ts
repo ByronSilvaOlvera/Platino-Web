@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardData } from '../../models/menu';
+import { ViewUxService } from '../../services/view-ux.service';
 
 @Component({
   selector: 'app-inicio-page',
@@ -8,8 +9,10 @@ import { CardData } from '../../models/menu';
 })
 export class InicioPageComponent implements OnInit {
 
+  name:string ="";
   boxs:number[] = [1,2,3,4]; // [1,2,3,4,5,6,7,8,9,10];
-  data: CardData[] = [
+  data:CardData[]=[];
+  menus: CardData[] = [
     {
       icon: "fas fa-users",
       numero : 1258,
@@ -70,13 +73,53 @@ export class InicioPageComponent implements OnInit {
       subtitle: "visitan",
       tipo: "cita",
 
+    },
+
+    {
+      icon: "far fa-grin-tears",
+      numero : 7586,
+      title: "",
+      subtitle: "Numeros de atenciones",
+      tipo: "atencion",
+
+    },
+    {
+      icon: "fas fa-dolly-flatbed",
+      numero : 7586 * 0.3,
+      title: "",
+      subtitle: "Buenos comentarios",
+      tipo: "atencion",
+
+    },
+    {
+      icon: "far fa-tired",
+      numero : 7586 * 0.1,
+      title: "",
+      subtitle: " Quejas ",
+      tipo: "atencion",
+
+    },
+    {
+      icon: "fas fa-cart-plus",
+      numero : 7586 *0.6,
+      title: "",
+      subtitle: "Atenciones efectivas",
+      tipo: "atencion",
+
     }
   ];
 
+  
 
-  constructor() { }
+  constructor(private _srvMenu: ViewUxService) { }
 
   ngOnInit(): void {
+    this._srvMenu.getMenu().subscribe(resp => {
+      this.name = resp.title!;
+      this.data = this.menus.filter( x => x.tipo == resp.title?.toLowerCase() )
+      
+      
+    })
   }
 
 }
