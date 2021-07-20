@@ -1,8 +1,7 @@
 <div class="form-main-cli" >
-    <div class="cardz">
-        <h5 class="card-title">{{ titulo }} </h5>
-        <hr>
-    </div>
+    
+    <app-estado-id [uid]="uid" [contenido]="namecontenido" [view]="true" ></app-estado-id>
+    <hr>
 
     <form [formGroup]="entidadForm" (ngSubmit)="onSubmit()"  class="form-body-cli" >
         <app-input-form type="text" id="nombres" name="Nombres"

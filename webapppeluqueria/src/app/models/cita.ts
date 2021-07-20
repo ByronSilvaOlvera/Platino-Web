@@ -3,6 +3,7 @@
 export interface ResponseCita {
     ok:   boolean;
     cita: Cita;
+    msg?:string;
 }
 
 export interface Cita {

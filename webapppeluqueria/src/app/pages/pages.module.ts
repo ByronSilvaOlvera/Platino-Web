@@ -21,6 +21,18 @@ import { DetalleAtencionComponent } from './atencion/detalle-atencion/detalle-at
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { SharedModule } from '../shared/shared.module';
+
+
+import { StoreModule } from '@ngrx/store';
+import { pageReducer } from '../store/page.reducer';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
+
+
 
 @NgModule({
   declarations: [
@@ -43,10 +55,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    SnotifyModule,
+    SharedModule,
+    StoreModule.forRoot({ page : pageReducer  }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
+    StoreRouterConnectingModule.forRoot(), 
+    
   ],
   exports:[
     ClienteComponent
+  ],
+  providers : [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
   ]
 })
 export class PagesModule { }

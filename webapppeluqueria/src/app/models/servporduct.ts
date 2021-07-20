@@ -6,9 +6,9 @@ export interface ResponseSerProducto {
 }
 
 export interface Servicio {
-    _id:    string;
-    nombre: string;
-    precio: number;
-    tiempo: string;
-    __v:    number;
+    _id?:    string;
+    nombre?: string;
+    precio?: number;
+    tiempo?: string;
+    __v?:    number;
 }

@@ -9,7 +9,7 @@ const AtencionSchema =  Schema({
   fecha     : { type: Date, default: Date.now },
   hora      : { type: String },
   idcita    : { type: Schema.Types.ObjectId, ref : Cita },
-  idservicio: [  { uid : {  type: Schema.Types.ObjectId, ref : Servicio } } ],
+  idservicio: [  { uidService : {  type: Schema.Types.ObjectId, ref : Servicio } } ],
   idcliente : { type: Schema.Types.ObjectId, ref : Cliente },
 
 },

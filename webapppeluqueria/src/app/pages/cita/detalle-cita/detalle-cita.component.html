@@ -1,12 +1,8 @@
 <div class="detalle-box" >
-    <div>
-        <p class="titulo">
-            Detalle del Cita
-        </p>
-    </div>
+    <app-estado-id [uid]="uid" contenido="Detalle de la cita" [view]="true" ></app-estado-id>
     <div class="card">
         <div class="card-title" >
-            <h5>N° {{ cita._id }}</h5>
+            <h5>{{cita.idcliente.nombres! +" "+cita.idcliente.apellidos! }}</h5>
             <hr>
         </div>
         <div class="card-division" >

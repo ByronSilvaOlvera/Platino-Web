@@ -6,85 +6,114 @@ import { AtencionService } from '../../services/atencion.service';
 import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+import { SnotifyService } from 'ng-snotify';
+import { Store } from '@ngrx/store';
+import { AppState, Menu } from 'src/app/models/menu';
+import { Paginacion } from '../../models/menu';
+import { completa } from '../../store/page.actions';
 
 @Component({
   selector: 'app-atencion',
   templateUrl: './atencion.component.html',
-  styleUrls: ['./atencion.component.scss']
+  styleUrls: ['./atencion.component.scss'],
 })
 export class AtencionComponent implements OnInit {
+  seleccion: number = 0;
 
-  seleccion:number=0;
-  
-  atencion:GridTable [] = [];
-  header:HeaderGridTable [] = [];
+  atencion: GridTable[] = [];
+  header: HeaderGridTable[] = [];
 
   subcripcion: Subscription;
-  
+  page:number=1;
+  pagemov:boolean=true;
+  menu: Menu = {};
 
-  constructor( private _srvMenu: ViewUxService
-    ,private _srventidad : AtencionService
-    ,private spinner: NgxSpinnerService
-    ,private router: Router  ) { 
+  constructor(
+    private _srvMenu: ViewUxService,
+    private _srventidad: AtencionService,
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private snotifyService: SnotifyService,
+    
+  ) {
+    
+    // cabezera del data-grid
+    this.createHeader();
 
-     // SUB MENU
-     this.subcripcion = this._srvMenu.getOption().subscribe( s => 
-      {
-        this.seleccion = s
-        this.spinner.hide()
-      });
-      this.createHeader();
-    }
+    // SUB MENU
+    this.subcripcion = this._srvMenu.getOption().subscribe((s) => {
+      this.seleccion = s;
+      this.spinner.hide();
+    });
+
+   
+
+  }
 
   ngOnInit(): void {
-    this.dataGrid(1);3
+    this.subcripcion = this._srvMenu
+      .getOption()
+      .subscribe((s) => (this.seleccion = s));
+    this._srvMenu.getMenu().subscribe((menu) => (this.menu = menu));
 
-    console.log(this.router.url);
-    
-    
-    // this._srvMenu.getMenu().subscribe( data => {
-    //   console.log(data);
-      
-    //   if(data.link?.length === 0){
-    //     console.log('sin titulo');
-        
-    //   }
-    // })
+    //DATA DEL DATAGRID
+    this.dataGrid(1);
+    //console.log(this.router.url);
+    // carga los datos de la ruta inicial de cada
+    //menu de opciones
+    this._srvMenu.addRuta(this.router.url);
+  }
+
+  dataGrid(p: number) {
+   
+      this.spinner.show();
+
+      this._srventidad.getAllEntidad(p).subscribe(
+        (data) => {
+          if (data.ok) {
+            this.atencion = [];
+            data.atencion?.forEach((x) => {
+              this.atencion.push({
+                campo1: x.idcliente?.nombres! + ' ' + x.idcliente?.apellidos!,
+                campo2: moment(x.fecha, 'YYYY/MM/DD').format('YYYY/MM/DD'),
+                campo3: x.hora,
+                uid: x._id,
+              });
+            });
+            this.spinner.hide();
+          } else {
+            this.pagemov = false;
+            --this.page;
+            this.spinner.hide();
+            this.snotifyService.info(`las atenciones estan completas`);
+            
+          }
+        },
+        (err) => {
+          console.log(err);
+          this.spinner.hide();
+          this.snotifyService.error(`Error en el Servicio web: ${err.message}`);
+        }
+      );
     
   }
 
-  dataGrid(p:number){
-    this.spinner.show();
-    this._srventidad.getAllEntidad(1).subscribe(data => {
-      
-      if(data.ok){
-
-        data.atencion?.forEach( x => {
-          this.atencion.push({
-            campo1 : x.idcliente?.nombres! + " "+x.idcliente?.apellidos!,
-            campo2 : moment(x.fecha,"YYYY/MM/DD").format("YYYY/MM/DD"),
-            campo3 : x.hora,
-            uid : x._id
-          })
-          
-        })
-        this.spinner.hide();
-      }else{
-        
-        this.spinner.hide();
-      }
-    }, err => {
-      console.log(err);
-      
-    })
+  onPageSiguiente(){
+    if(this.pagemov){
+      this.dataGrid(++this.page);
+    }
   }
 
-  createHeader(){
-    this.header.push({ camponame : 'Cliente' })
-    this.header.push({ camponame : 'Fecha' })
-    this.header.push({ camponame : 'Hora' })
+  onPageAnterior(){
+    if(this.page > 1 ){
+      this.dataGrid(--this.page);
+    }
+    if(this.pagemov === false){ this.pagemov = true }
   }
 
-
-
+  createHeader() {
+    this.header.push({ camponame: 'Cliente' });
+    this.header.push({ camponame: 'Fecha' });
+    this.header.push({ camponame: 'Hora' });
+  }
 }

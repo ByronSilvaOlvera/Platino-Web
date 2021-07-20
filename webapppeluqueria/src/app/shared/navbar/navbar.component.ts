@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
       icon : 'fas fa-user',
       title : 'Cliente',
       link : '/cliente',
+      componente : 'cliente.component.ts'
     },
     {
       icon : 'fas fa-calendar-check',
@@ -42,7 +43,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private _srvMenu: ViewUxService) {
     this.subcripcion = this._srvMenu.getRuta().subscribe(
-      data =>{
+      data =>{               
         this.completeMenu(data);
       }
     )
@@ -52,20 +53,22 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  //
   completeMenu(link:string){
     let menu= {}; 
     let num = -1;
     this.menus.filter((x, i) => {
       if(x.link === link){ menu = x; num = i  }
     });
-
+        
     this.chooseMenu(menu,num);
   }
 
   chooseMenu(menu: Menu, num : number){
     this._srvMenu.addMenuChoose(menu);
+     
     var obj = document.querySelectorAll('.navbar-item li');  
-    
+       
     obj?.forEach( (b, i) => {
 
       let n = b.attributes.getNamedItem('id')?.nodeValue;

@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { InicioPageComponent } from './inicio-page/inicio-page.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { DeleteMsgComponent } from './delete-msg/delete-msg.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -23,6 +24,7 @@ import { DeleteMsgComponent } from './delete-msg/delete-msg.component';
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   exports : [
     GridDataComponent,

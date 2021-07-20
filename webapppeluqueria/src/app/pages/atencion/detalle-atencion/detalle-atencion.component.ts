@@ -4,6 +4,9 @@ import { ViewUxService } from '../../../services/view-ux.service';
 import { Subscription } from 'rxjs';
 import { AtencionService } from '../../../services/atencion.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Servicio } from '../../../models/servporduct';
+import { ServicioProductoService } from '../../../services/servicio-producto.service';
+import { Idservicio } from '../../../models/atencion';
 
 @Component({
   selector: 'app-detalle-atencion',
@@ -15,21 +18,24 @@ export class DetalleAtencionComponent implements OnInit {
   subcripcion: Subscription;
   atencion: Atencion = {idcliente:{nombres:"", apellidos:""}};
   uid : string = "";
+  servicios : Servicio [] = [];
 
   constructor(private _srvMenu: ViewUxService
     ,private _srventidad : AtencionService
+    ,private _srvservicio : ServicioProductoService
     ,private spinner: NgxSpinnerService) { 
 
     //SUBCRIPCION UID
     this.subcripcion = this._srvMenu.getUId().subscribe( uid => {
-      this.uid = uid;
-      if( uid.length > 0 ){
+      this.uid = uid.uid!
+      if( uid.uid?.length! > 0 ){
 
-        this._srventidad.getEntidad(uid).subscribe( data => {
+        this._srventidad.getEntidad(uid.uid!).subscribe( data => {
           if(data.ok){
-            //console.log(data);
             
-            this.atencion = data.atencion!;
+            this.atencion = data.atencion!;            
+            
+            this.obtenerServicio(data.atencion?.idservicio!);
             this.spinner.hide();
           }else{
             this.spinner.hide();
@@ -47,6 +53,28 @@ export class DetalleAtencionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+
+  obtenerServicio(ser: Idservicio[]){
+   
+    
+    this._srvservicio.getAllEntidad(1).subscribe( data => {
+      if(data.ok){
+     
+        this.servicios = [];
+        ser.forEach( x => {
+          data.servicios.filter( y => {
+            if(y._id === x.uidService){
+              this.servicios.push( y );
+            }
+          }) 
+        })
+
+      }
+      else{}
+    }, err => ( console.log('error')
+    ))
   }
 
 }

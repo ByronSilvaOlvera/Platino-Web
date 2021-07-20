@@ -1,8 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GridTb, GridTable, HeaderGridTable } from '../../models/grid-table';
 import { ViewUxService } from '../../services/view-ux.service';
-import { ClienteService } from '../../services/cliente.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subscription, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { decrement, incompleta, increment } from 'src/app/store/page.actions';
+import { AppState, Paginacion, Menu } from '../../models/menu';
+import { reset, componente } from '../../store/page.actions';
+
+
+
 
 @Component({
   selector: 'app-grid-data',
@@ -13,38 +20,50 @@ export class GridDataComponent implements OnInit {
 
   @Input() table:GridTable [] = [];
   @Input() header:HeaderGridTable [] = [];
-  page:number= 1;
+  @Input() namePage:string=''
+  @Input() numpage:number= 0;
   
 
   @Input() title:string = "";
-  numero : number [] = []; // [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-  //header : number [] = [1,2,3,4];
+
+  count: Paginacion = {page :0, completa:true, numberPage:0}; 
+  @Input() menu:Menu={};
 
   constructor(private _srvMenu: ViewUxService
-    ,private spinner: NgxSpinnerService) { }
+    ,private spinner: NgxSpinnerService
+    ,private store: Store<AppState>
+    ) {
+      
+      this.store.select("page").subscribe( x => {
+        this.count = x!       
+      });
 
-  ngOnInit(): void {
-
+    }
     
+    ngOnInit(): void {
+      
+    //En que componente se carga el Grid-table
+    this.store.dispatch(reset( ));
+    this.store.dispatch(componente({ componente : this.menu.title! } ));
+    this.store.dispatch(incompleta( ));
   }
-
+  
   onPagePositiva(){
-   // subcripcion 
-   this._srvMenu.addPage(this.page++);
-   console.log(this.page);
+    
+    if( this.count.completa ){
+      this.store.dispatch(increment());
+    }
    
   }
   onPageNegativa(){
-    // subcripcion 
-    this._srvMenu.getPage().subscribe(d => {
-
-      console.log(this.page);
-      if(this.page > 1){
-        console.log(this.page);
-        this._srvMenu.addPage(this.page--);
-      }
-    })
- 
+    
+    if(this.count.page! > 1){
+      this.store.dispatch(decrement());
+    }
+    
+    if( this.count.completa == false){
+      this.store.dispatch(incompleta());
+    }
   }
 
   onDelete(uid:string){
@@ -62,7 +81,7 @@ export class GridDataComponent implements OnInit {
 
     this.spinner.show();
     setTimeout( () => {
-      this._srvMenu.addUId(uid);
+      this._srvMenu.addUId({uid:uid,tipo:'D'});
     }
     ,1000)
     
@@ -76,7 +95,7 @@ export class GridDataComponent implements OnInit {
     this._srvMenu.addOption(3);
     this.spinner.show();
     setTimeout( () => {
-      this._srvMenu.addUId(uid);
+      this._srvMenu.addUId({uid:uid,tipo:'U'});
     }, 1000)
     
   }

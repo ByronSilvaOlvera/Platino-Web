@@ -1,29 +1,26 @@
-<div class="detalle-box" >
-    <div>
-        <p class="titulo">
-            Detalle del Cliente
-        </p>
-    </div>
-    <div class="card">
-        <div class="card-title" >
-            <h5>{{ cliente.nombres }}</h5>
-            <hr>
-        </div>
-        <div class="card-division" >
-            <div class="card-left">
-                <i class="fas fa-user-tag"></i>
-            </div>
-            <div class="card-rigth"  >
-                <p class="card-text"><b>Nombre:</b> {{cliente.nombres!}} </p>
-                <p class="card-text"><b>Apellidos:</b> {{cliente.apellidos!}} </p>
-                <p class="card-text"><b>Identidad:</b> {{cliente.identificacion}} </p>
-                <p class="card-text"><b>Telefono:</b> {{cliente.telefono}} </p>
-                <p class="card-text"><b>Email:</b> {{cliente.email}} </p>
-                <p class="card-text"><b>Direccion:</b> {{cliente.direccion}} </p>
-                <p class="card-text"><b>Nacimiento:</b> {{cliente.fechanacio | date}} </p>
-                
-            </div>
-        </div>
-    </div>
+<div class="detalle-box">
+  <app-estado-id [uid]="uid" contenido="Detalle del Cliente" [view]="true" ></app-estado-id>
 
+  <div class="card">
+    <div class="card-title">
+      <h5>{{ cliente.nombres }}</h5>
+    </div>
+    <hr />
+    <div class="card-division">
+      <div class="card-left">
+        <i class="fas fa-user-tag"></i>
+      </div>
+      <div class="card-rigth">
+        <p class="card-text"><b>Nombre:</b> {{ cliente.nombres! }}</p>
+        <p class="card-text"><b>Apellidos:</b> {{ cliente.apellidos! }}</p>
+        <p class="card-text"><b>Identidad:</b> {{ cliente.identificacion }}</p>
+        <p class="card-text"><b>Telefono:</b> {{ cliente.telefono }}</p>
+        <p class="card-text"><b>Email:</b> {{ cliente.email }}</p>
+        <p class="card-text"><b>Direccion:</b> {{ cliente.direccion }}</p>
+        <p class="card-text">
+          <b>Nacimiento:</b> {{ cliente.fechanacio! | date }}
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

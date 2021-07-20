@@ -37,11 +37,12 @@ export class SubmenuComponent implements OnInit {
     this.onSeleccionMenu(num);
     // Selecciona el numero del submenu
     this._srvMenu.addOption(num +1 );
-
+    //console.log(num);
+    
     /// SI VOY A CREAR UN OBJETO
     if(num === 1){
       setTimeout(() => {
-        this._srvMenu.addUId('');
+        this._srvMenu.addUId({uid:'',tipo:'C'});
       },1000)
     }
     

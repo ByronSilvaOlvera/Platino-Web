@@ -25,7 +25,7 @@ export interface Atencion {
 
 export interface Idservicio {
     _id?: string;
-    uid?: string;
+    uidService?: string;
 }
 
 

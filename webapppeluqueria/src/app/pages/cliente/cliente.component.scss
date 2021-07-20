@@ -10,10 +10,29 @@
         align-items: center;
         flex-direction: row;
     }
+
+    .table-page{
+        width: 98%;
+        border: 1px solid #ff000026;
+        padding: 1rem;
+        button{
+            width: 110px;
+            margin-right: 2rem;
+            color: #410a44;
+        }
+    }
 }
 
 .cliente-opciones{
+    transition: 5s;
     div{
         transition: 5s;
     }
 }
+
+// .table-page{
+//     button{
+//         width: 110px;
+//         margin-right: 2rem;
+//     }
+// }

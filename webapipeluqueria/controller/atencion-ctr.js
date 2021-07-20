@@ -5,7 +5,7 @@ const Atencion = require("../models/atencion-model");
 
 const addEntity = async (req=request, res=response) => {
     try {
-
+        console.log('add atencion ' ,req.body);
         atencion = await Atencion(req.body);
         await atencion.save();
         res.status(200).json({

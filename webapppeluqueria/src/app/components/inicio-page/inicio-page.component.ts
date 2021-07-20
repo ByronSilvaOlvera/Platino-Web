@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CardData } from '../../models/menu';
 import { ViewUxService } from '../../services/view-ux.service';
 
@@ -12,6 +12,8 @@ export class InicioPageComponent implements OnInit {
   name:string ="";
   boxs:number[] = [1,2,3,4]; // [1,2,3,4,5,6,7,8,9,10];
   data:CardData[]=[];
+  @Input() menunum : number = 0
+
   menus: CardData[] = [
     {
       icon: "fas fa-users",
@@ -19,6 +21,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "Numeros de clientes",
       tipo: "cliente",
+      position: 1
     },
     {
       icon: "fas fa-users-slash",
@@ -26,6 +29,8 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "Numeros que no visitan",
       tipo: "cliente",
+      position: 1
+
     },
     {
       icon: "fas fa-users-cog",
@@ -33,6 +38,8 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: " falta completar datos",
       tipo: "cliente",
+      position: 1
+
     },
     {
       icon: "far fa-eye",
@@ -40,6 +47,8 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "visitan",
       tipo: "cliente",
+      position: 1
+
     },
 
     {
@@ -48,6 +57,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "Numeros de clientes",
       tipo: "cita",
+      position: 2
 
     },
     {
@@ -56,6 +66,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "Numeros que no visitan",
       tipo: "cita",
+      position: 2
 
     },
     {
@@ -64,7 +75,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: " falta completar datos",
       tipo: "cita",
-
+      position: 2
     },
     {
       icon: "fas fa-calendar-plus",
@@ -72,6 +83,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "visitan",
       tipo: "cita",
+      position: 2
 
     },
 
@@ -81,6 +93,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "Numeros de atenciones",
       tipo: "atencion",
+      position: 3
 
     },
     {
@@ -89,6 +102,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "Buenos comentarios",
       tipo: "atencion",
+      position: 3
 
     },
     {
@@ -97,6 +111,7 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: " Quejas ",
       tipo: "atencion",
+      position: 3
 
     },
     {
@@ -105,21 +120,28 @@ export class InicioPageComponent implements OnInit {
       title: "",
       subtitle: "Atenciones efectivas",
       tipo: "atencion",
+      position: 3
 
     }
   ];
 
   
 
-  constructor(private _srvMenu: ViewUxService) { }
+  constructor(private _srvMenu: ViewUxService) { 
+
+  }
 
   ngOnInit(): void {
-    this._srvMenu.getMenu().subscribe(resp => {
-      this.name = resp.title!;
-      this.data = this.menus.filter( x => x.tipo == resp.title?.toLowerCase() )
+    //console.log(this.menunum);
+    this.data = this.menus.filter( x => x.position === this.menunum! );
+
+    // this._srvMenu.getMenu().subscribe(resp => {
+    //   this.name = resp.title!;
+    //   this.data = this.menus.filter( x => x.position === this.menunum! );
+    //   console.log(this.data);
       
-      
-    })
+    // })
+    
   }
 
 }

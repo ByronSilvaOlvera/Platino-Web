@@ -5,6 +5,8 @@ import { Cita } from '../../../models/cita';
 import { ClienteService } from '../../../services/cliente.service';
 import { Cliente } from '../../../models/cliente';
 import { CitasService } from '../../../services/citas.service';
+import { SnotifyService } from 'ng-snotify';
+
 
 
 @Component({
@@ -35,7 +37,9 @@ export class FormCitaComponent implements OnInit {
   ]
 
   constructor(private _srvcliente : ClienteService
-    ,private _srventidad : CitasService) {
+    ,private _srventidad : CitasService
+    ,private snotifyService: SnotifyService
+    ) {
     this.entidadForm = this.initForm(false);
    }
 
@@ -54,27 +58,33 @@ export class FormCitaComponent implements OnInit {
     if(this.entidadForm.valid){
       this._srventidad.addEntidad(this.entidadForm.value).subscribe( d => {
         if(d.ok){
-          console.log('Exitoso');
+          //console.log('Exitoso');
 
-          this.entidadForm.reset
+          this.entidadForm.reset();
+          this.snotifyService.success('Cita Guardar exitosamente')
         }else{
           console.log('error al Guardar');
+          this.snotifyService.warning('Sucedio un error al guarda la cita '+ d.msg)
           
         }
       }, err => {
         console.log(err);
-        
+        this.snotifyService.error('Servicio Web no Responde ' + err)
       })
     }else{
       console.log('Error');
+      this.snotifyService.warning('Datos de la Cita incopmpletos' )
       
     }
   }
-
-
+  
+  
   getClientes(){
     this._srvcliente.getAllEntidadOK().subscribe(data => {
       this.clientes = data.clientes;
+    }, err => {
+      this.snotifyService.error('Servicio Web no Responde ' + err)
+
     })
   }
   
@@ -98,7 +108,7 @@ export class FormCitaComponent implements OnInit {
         hora       : new FormControl("", Validators.required),
         descripcion: new FormControl("", Validators.required),
         estado     : new FormControl("", Validators.required),
-        idcliente  : new FormControl("", Validators.required),
+        idcliente  : new FormControl("1", Validators.required),
      });
     }
   }

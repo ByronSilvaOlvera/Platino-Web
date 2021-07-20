@@ -1,0 +1,26 @@
+<div class="detalle-titulo" >
+
+    <div class="titulo-uid">
+        <i class="far fa-dot-circle"></i>
+        <label class="titulo"> {{contenido}}</label>
+    </div>
+    
+    
+    <div class="detalle-uid" *ngIf="view" >
+        <div *ngIf="uid.length > 0" >
+            <span><b>ID</b> </span> 
+            <span><b>: {{ uid }}</b></span>
+        </div>
+        <div>
+            <button type="button" class="btn btn-light position-relative">
+                Id
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{ uid.length > 0?1:0 }}
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+    
+    

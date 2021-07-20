@@ -1,14 +1,30 @@
 <div *ngIf="seleccion == 0" >
-    <app-inicio-page></app-inicio-page>
+    <app-inicio-page [menunum]="1" ></app-inicio-page>
 </div>
 
 <div class="cliente-opciones " >
     <!-- List -->
 
     <div class="pg-cliente" *ngIf="seleccion == 1">
-        <app-grid-data title="Listado de Clientes" [header]="header"
-            [table]="clientes" *ngIf="clientes.length > 0">
+        <app-grid-data title="Listado de Clientes" [header]="header" 
+            [table]="clientes" namePage="Clientes"  >
         </app-grid-data>    
+        <div class="table-page">
+            <button type="button" class="btn btn-outline-info"
+             (click)="onPageAnterior()" >
+                <i class="fas fa-arrow-left"></i>
+            </button>
+    
+            <button type="button" class="btn btn-outline-primary">
+                Pagina <span class="badge bg-secondary">{{ page }}</span>
+            </button>
+    
+            <button type="button" class="btn btn-outline-info"
+             (click)="onPageSiguiente()" >
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            
+        </div>
     </div>
     
     <!-- Create -->
@@ -28,5 +44,7 @@
        <app-delete-msg></app-delete-msg>
     </div>
 </div>
+
+<ng-snotify></ng-snotify>
 
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-fussion" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

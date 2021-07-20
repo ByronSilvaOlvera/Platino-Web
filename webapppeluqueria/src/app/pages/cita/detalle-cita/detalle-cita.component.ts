@@ -24,9 +24,9 @@ export class DetalleCitaComponent implements OnInit {
 
     //SUBCRIPCION UID
     this.subcripcion = this._srvMenu.getUId().subscribe( uid => {
-      this.uid = uid;
-      if(uid.length > 0){
-        this._srventidad.getEntidad(uid).subscribe( data => {
+      this.uid = uid.uid!;
+      if(uid.uid?.length! > 0){
+        this._srventidad.getEntidad(uid.uid!).subscribe( data => {
           if(data.ok){
             this.cita = data.cita;
 

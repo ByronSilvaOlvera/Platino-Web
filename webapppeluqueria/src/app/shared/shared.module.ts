@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { TitlePageComponent } from './title-page/title-page.component';
 import { SubmenuComponent } from './submenu/submenu.component';
+import { EstadoIDComponent } from './estado-id/estado-id.component';
 
 
 
@@ -12,7 +13,8 @@ import { SubmenuComponent } from './submenu/submenu.component';
   declarations: [
     NavbarComponent,
     TitlePageComponent,
-    SubmenuComponent
+    SubmenuComponent,
+    EstadoIDComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { SubmenuComponent } from './submenu/submenu.component';
   exports : [
     NavbarComponent,
     TitlePageComponent,
-    SubmenuComponent
+    SubmenuComponent,
+    EstadoIDComponent
   ]
 })
 export class SharedModule { }

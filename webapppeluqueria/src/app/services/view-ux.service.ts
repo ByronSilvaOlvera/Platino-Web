@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Menu } from '../models/menu';
+import { Menu, Paginacion, uidTipo } from '../models/menu';
 import { Observable, pipe, Subject } from 'rxjs';
 
 @Injectable({
@@ -13,11 +13,12 @@ export class ViewUxService {
   opcion: number=0;
   private opcion$ = new Subject<number>();
   
-  private uid:string='';
-  private clienteUid$ = new Subject<string>();
+  private uid:uidTipo={uid:""};
+  private clienteUid$ = new Subject<uidTipo>();
 
-  private pages:number=1;
-  private pagesUid$ = new Subject<number>();
+   pages:Paginacion={};
+  private pagesUid$ = new Subject<Paginacion>();
+  
 
   private ruta:string="";
   private rutaLink$ = new Subject<string>();
@@ -40,23 +41,38 @@ export class ViewUxService {
 
   // PAGES
 
-  addPage(n:number){
+  initPage(){
+    this.pages = { page:1,completa:true }
+    this.pagesUid$.next(this.pages);
+  }
+
+  addPage(n:Paginacion){
     this.pages = n;
     this.pagesUid$.next(this.pages);
   }
-  getPage(): Observable<number>{
+
+  getPage(): Observable<Paginacion>{
     return this.pagesUid$.asObservable();
   }
 
+  // subPage(){
+  //   --this.pages;
+  //   this.pagesNull$.next(this.pages)
+  // }
+
+  // getPageNull() : Observable<number>{
+  //   return this.pagesNull$.asObservable();
+  // }
 
   /// UID
 
-  addUId(uid:string){
-    this.uid = uid;
+  addUId(uid:uidTipo){
+    this.uid.uid = uid.uid;
+    this.uid.tipo = uid.tipo;
     this.clienteUid$.next(this.uid);
   }
   
-  getUId() : Observable<string> {
+  getUId() : Observable<uidTipo> {
     return this.clienteUid$.asObservable();
   }
 

@@ -1,8 +1,7 @@
 <div class="atencion-form" >
-<div class="cardz">
-    <h5 class="card-title">{{ titulo }} </h5>
-    <hr>
-</div>
+    
+<app-estado-id uid="" contenido="Crear una atencion" [view]="true" ></app-estado-id>
+<hr>
 
 <div class="busqueda-cliente" >
     <div class="mb-3 row">
@@ -41,8 +40,8 @@
             </div>
             <div class="col-sm-10 cita-detalle " >
 
-                <p>Fecha: <span>{{ cita.fecha | date}}</span></p>
-                <p>Hora: <span>{{ cita.hora }}</span></p>
+                <p>Fecha: <span>{{ cita.fecha! | date}}</span></p>
+                <p>Hora: <span>{{ cita.hora! }}</span></p>
                 <p>ID: <span>{{ cita.idcliente.nombres! + " "+
                     cita.idcliente.apellidos! }}</span></p>
                 
@@ -65,7 +64,8 @@
         </div>
         <div class="atencion-btn" >
             <button type="submit" class="btn btn-outline-success">Guardar</button>
-            <button type="button" class="btn btn-outline-success">Reset</button>
+            <button type="button" class="btn btn-outline-info">Nueva</button>
+            <button  (click)="onNuevaAtencion()" type="button" class="btn btn-outline-danger">Reset</button>
 
         </div>
 

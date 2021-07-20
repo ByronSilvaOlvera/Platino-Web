@@ -1,12 +1,10 @@
 <div class="detalle-box" >
-    <div>
-        <p class="titulo">
-            Detalle del Atencion
-        </p>
-    </div>
+    <app-estado-id [uid]="uid" contenido="Detalle de la atencion" [view]="true" ></app-estado-id>
+
     <div class="card">
         <div class="card-title" >
-            <h5>N° {{ atencion._id }}</h5>
+            <h5>{{atencion.idcliente?.nombres! 
+                +" "+atencion.idcliente?.apellidos }}</h5>
             <hr>
         </div>
         <div class="card-division" >
@@ -20,7 +18,13 @@
                 <p class="card-text"><b>Descripcion:</b> {{atencion.fecha}} </p>
                 <p class="card-text"><b>Fecha:</b> {{atencion.fecha!}} </p>
                 <p class="card-text"><b>Hora:</b> {{atencion.hora}} </p>
-    
+                <div class="detalle-service" >
+                    <b>Servicios Antendidos</b>
+                    <div *ngFor="let servicio of servicios" >
+                        <i class="fas fa-cart-plus"></i>
+                        <label for=""> {{ servicio.nombre! |uppercase}} </label>
+                    </div>
+                </div>        
             </div>
         </div>
         <!-- <div class="card-box-btn" >

@@ -2,10 +2,8 @@
 
 <div class="form-cita" >
 
-    <div class="cardz">
-        <h5 class="card-title">{{ titulo }} </h5>
-        <hr>
-    </div>
+  <app-estado-id uid="" contenido="Crear cita cliente" [view]="true" ></app-estado-id>
+  <hr>
 
     <form [formGroup]="entidadForm" (ngSubmit)="onSubmit()"  class="form-body-cli" >
         
@@ -51,7 +49,9 @@
           </div>
         </div>
 
-        <div>
+        <hr>
+
+        <div class="form-btn" >
             <button type="submit" class="btn btn-outline-success">Guardar</button>
             <button type="button" class="btn btn-outline-secondary">Borrar</button>
 

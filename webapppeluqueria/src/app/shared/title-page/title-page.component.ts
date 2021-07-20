@@ -26,10 +26,10 @@ export class TitlePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.menu, this.router.url );
+    //console.log(this.menu, this.router.url );
     
     if(Object.keys(this.menu).length === 0){
-      console.log('sin titulo y icons');
+      //console.log('sin titulo y icons');
       //this._srvMenu.addRuta(this.router.url);
     }
   }

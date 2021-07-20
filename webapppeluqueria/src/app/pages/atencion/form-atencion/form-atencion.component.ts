@@ -9,6 +9,7 @@ import { Servicio } from 'src/app/models/servporduct';
 import { Cita } from '../../../models/cita';
 import { CitasService } from '../../../services/citas.service';
 import { AtencionService } from '../../../services/atencion.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-form-atencion',
@@ -29,7 +30,9 @@ export class FormAtencionComponent implements OnInit {
   constructor(private _srvcliente : ClienteService
     ,private _srvatencion : AtencionService
     ,private _srvcita : CitasService
-    ,private _srvproducto : ServicioProductoService) {
+    ,private _srvproducto : ServicioProductoService
+    ,private snotifyService: SnotifyService
+    ) {
     this.entidadForm = this.initForm(false);
    }
 
@@ -51,63 +54,69 @@ export class FormAtencionComponent implements OnInit {
   }
 
   onSave(){
-    this.entidadForm.value.idcliente =this.uidcliente;
-    this.entidadForm.value.idcita = this.uidcita;
-    let doc:any = [];
-    this.entidadForm.value.idservicio.forEach( (x:number) => {
-      doc.push({id:x})
-    });
-    this.entidadForm.value.idservicio = doc;
-    let entidad = this.entidadForm.value; 
-    //console.log(entidad, this.entidadForm.value, this.entidadForm.valid);
     
     if(this.entidadForm.valid){
+      this.entidadForm.value.idcliente =this.uidcliente;
+      this.entidadForm.value.idcita = this.uidcita;
+      let doc:any = [];
+      this.entidadForm.value.idservicio.forEach( (x:number) => {
+        console.log('id servicio',x);
+        
+        doc.push({uidService:x})
+      });
+      this.entidadForm.value.idservicio = doc;
+      let entidad = this.entidadForm.value; 
+
       this._srvatencion.addEntidad(entidad).subscribe( data => {
         if(data.ok){
 
           console.log('Exitoso', data.atencion?._id);
+          this.snotifyService.success('Nueva Atencion guardada')
           this.entidadForm.reset();
         }else{
+          this.snotifyService.warning('Error al guardar la Atencion!')
           console.log('Error');
           
         }
       },err=> {
         console.log(err);
+        this.snotifyService.error(`Servicio Web ocurrio un error ${err}`)
         
       })
     }else{
-      console.log('no valid', entidad);
+
+      this.snotifyService.info(`Informacion incompleta `)
       
     }
 
+  }
+
+  onNuevaAtencion(){
+    this.entidadForm = this.initForm(false);
   }
 
 
   getOneCliente(event:any){
     //console.log('cambio', event._id);
     this.uidcliente = event._id;
-    this._srvcliente.getEntidad(event._id).subscribe(data => {
-      if(data.ok){
-
-        console.log('Exitoso');
-        
-      }else{
-        console.log('Error');
-        
-      }
-    })
+    
 
     this._srvcita.getOneClienteId(event._id).subscribe( data => {
+            
       if( data.ok){
+
         this.cita = data.cita;
         this.uidcita = data.cita._id!;       
-        console.log('exitoso');
+        //console.log('exitoso');
+        //this.snotifyService.success('Atencion creada exitosa!' )
         
       }else{
-        console.log('Error');
+        //console.log('Error');
+        this.snotifyService.warning('Info ' +data.msg )
+       
         
       }
-    })
+    }, err => console.log(err) )
     
 
   }

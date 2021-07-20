@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ViewUxService } from '../../services/view-ux.service';
 import { Cliente } from '../../models/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { GridTb, GridTable, HeaderGridTable } from '../../models/grid-table';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SnotifyService } from 'ng-snotify';
+import { Store } from '@ngrx/store';
+import { decrement, reset } from '../../store/page.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente',
@@ -14,40 +18,43 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ClienteComponent implements OnInit {
 
   subcripcion: Subscription;
-  subcripcion2: Subscription;
+  //subcripcion2: Subscription;
   seleccion:number=0;
   clientes:GridTable [] = [];
   header:HeaderGridTable [] = [];
 
   page:number=1;
+  pagemov:boolean=true;
+  //pages$: Observable<number>;
 
   constructor(private _srvMenu: ViewUxService 
     , private _srventidad : ClienteService
-    ,private spinner: NgxSpinnerService) { 
+    ,private spinner: NgxSpinnerService
+    ,private snotifyService: SnotifyService
+    ,private router: Router
+    ) { 
      
      // SUB MENU
     this.subcripcion = _srvMenu.getOption().subscribe( s => {
       this.seleccion = s
       this.spinner.hide();
     });
-    // Paginacion 
-    this.subcripcion2 = _srvMenu.getPage().subscribe( p => 
-      {
-        this.page = p
-        this.dataGrid(p)
-      });  
+   
   
   }
 
   ngOnInit(): void {
     this.createHeader();
     this.dataGrid(this.page);
+    this._srvMenu.addRuta(this.router.url);  
     
   }
 
   dataGrid(p:number){
     this.spinner.show();
+
     this._srventidad.getAllEntidad(p).subscribe(
+      
       data => {
         if(data.ok ){
           this.clientes = [];
@@ -59,17 +66,34 @@ export class ClienteComponent implements OnInit {
               uid    : x._id
             })
           })
+          this.page = p
           this.spinner.hide();
-        }else{
-          console.log('No hay Data');
-          //this.clientes = [];
-          // resta xq pagima fue sumada en el grid-data
-          this._srvMenu.addPage(p--);
+        }else{         
+          this.pagemov = false;
+          --this.page;
           this.spinner.hide();
+          this.snotifyService.info('Clientes completos')
         }
         
+      }, err => {
+        console.log(err);
+        this.spinner.hide();
+        this.snotifyService.error(`Error en el Servicio web: ${ err.message }`)
       }
     )
+  }
+
+  onPageSiguiente(){
+    if(this.pagemov){
+      this.dataGrid(++this.page);
+    }
+  }
+
+  onPageAnterior(){
+    if(this.page > 1 ){
+      this.dataGrid(--this.page);
+    }
+    if(this.pagemov === false){ this.pagemov = true }
   }
 
   createHeader(){

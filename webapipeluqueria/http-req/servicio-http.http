@@ -66,7 +66,7 @@ GET http://localhost:8092/peluqueria/api/servicio/all/page/3/ HTTP/1.1
 GET http://localhost:8092/peluqueria/api/servicio/all/page/4/ HTTP/1.1
 
 #### OBTENER UNA servicio
-GET http://localhost:8092/peluqueria/api/servicio/one/60ef0e63a790d92b0ca4f891/ HTTP/1.1
+GET http://localhost:8092/peluqueria/api/servicio/one/60f220ab4d608452c8b20635/ HTTP/1.1
 
 ######
 

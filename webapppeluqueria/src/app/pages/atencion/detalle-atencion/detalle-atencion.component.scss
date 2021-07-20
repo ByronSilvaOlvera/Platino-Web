@@ -9,6 +9,7 @@
         font-size: 2.1rem;
     }
     .card{
+        margin-top: 0.8rem;
         padding: 2rem;
         .card-division{
             width: 100%;    
@@ -43,5 +44,19 @@
         width: 130px;
         height: 40px;
         margin-left: 1rem;
+    }
+}
+
+.detalle-service{
+    b{
+        font-size: 16px;
+    }
+    div{
+        margin: 0.6rem;
+        i{
+            margin-right: 1rem;
+            font-size: 1.3rem;
+            color: #4ca6a6;
+        }
     }
 }

@@ -14,6 +14,8 @@ export class AtencionService {
   }
   
   addEntidad(data : Atencion): Observable<AtencionResponse>{
+    console.log(data);
+    
     let url = `${this.urlbase}/atencion/add/`
     return this.http.post<AtencionResponse>(url , data);
     

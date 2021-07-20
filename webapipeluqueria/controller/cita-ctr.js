@@ -53,11 +53,19 @@ const getCitaCliente = async (req=request, res=response) => {
         .populate('idcliente', 'nombres apellidos')
         .sort({fecha : -1})
         .exec()
+        
+        if(cita!=null){
 
-        res.status(200).json({
-            ok:true,
-            cita     
-        });
+            res.status(200).json({
+                ok:true,
+                cita     
+            });
+        }else{
+            res.status(200).json({
+                ok:false,
+                msg: "El cliente no contiene cita"     
+            });
+        }
         
     } catch (error) {
         console.log('Todas cita =>Error ', error);
@@ -70,7 +78,7 @@ const getCitaCliente = async (req=request, res=response) => {
 
 const getAllEntity = async (req=request, res=response) => {
     try {
-        const { num, limit = 6 } = req.params;
+        const { num, limit = 10 } = req.params;
         
         citas = await Cita.find()
             .limit(limit * 1)

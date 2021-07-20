@@ -2,7 +2,34 @@
 $colorMain : #ecd1ee;
 $colorNavbar : #a31bab;
 
+.header-contenido{
+  //border: 2px solid red;
+  height: 14%;
+  app-title-page{
+    height: 100%;
+  }
+}
 
+.subcontenido{
+  
+  //border: 2px solid orange ;
+  height: 85%;
+  
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  .sub-menu{
+    width: 10%;
+    height: 100%;
+        
+  }
+  .main-pages{
+    width: 90%;
+    height: 100%;
+    
+  }
+
+}
 
 
 .body-store {
@@ -31,7 +58,7 @@ $colorNavbar : #a31bab;
     background-color: $colorMain;
     transition: 0.5s;
 
-    border: 2px solid brown;
+    //border: 2px solid brown;
     min-width: 400px;
   }
 }
@@ -59,22 +86,3 @@ $colorNavbar : #a31bab;
 }
 
 
-.subcontenido{
-
-  height: 85%;
-  
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  .sub-menu{
-    width: 10%;
-    height: 100%;
-        
-  }
-  .main-pages{
-    width: 90%;
-    height: 100%;
-    
-  }
-
-}

@@ -1,0 +1,42 @@
+
+   .detalle-titulo{
+    display: flex;
+    flex-direction: row ;
+    div{
+        width: 50%;
+    }
+    app-estado-id{
+        width: 50%;
+    }
+    .titulo-uid{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        font-size: 1.5rem;
+        i{
+            margin-right: 1rem ;
+            color: rgb(231, 22, 162);
+            font-size: 1.2rem;
+        }
+
+    }
+    
+}
+
+
+.detalle-uid{
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    div{
+        
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    
+}
