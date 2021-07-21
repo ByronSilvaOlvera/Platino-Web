@@ -24,6 +24,15 @@
              (click)="onPageSiguiente()" >
                 <i class="fas fa-arrow-right"></i>
             </button>
+
+            <button  (click)="onActualiza()" type="button" class="btn btn-outline-info">
+                <i class="fas fa-upload"></i> Update
+            </button>
+
+            <div class="spinner-border" role="status" *ngIf="updateTable" >
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
             
         </div>
     </div>

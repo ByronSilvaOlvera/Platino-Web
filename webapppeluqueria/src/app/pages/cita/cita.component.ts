@@ -107,6 +107,13 @@ export class CitaComponent implements OnInit {
     if(this.pagemov === false){ this.pagemov = true }
   }
 
+  updateTable:boolean=false;
+  onActualiza(){
+    this.updateTable = true;
+    this.dataGrid(1);
+    this.page = 1;
+    this.updateTable = false;
+  }
 
   createHeader() {
     this.header.push({ camponame: 'Cliente' });
