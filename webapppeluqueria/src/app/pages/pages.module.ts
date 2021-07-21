@@ -34,6 +34,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 
+
+
 @NgModule({
   declarations: [
     ClienteComponent,
@@ -65,6 +67,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     StoreRouterConnectingModule.forRoot(), 
+
+    
     
   ],
   exports:[

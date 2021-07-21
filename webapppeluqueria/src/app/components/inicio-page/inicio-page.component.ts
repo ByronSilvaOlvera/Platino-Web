@@ -9,9 +9,11 @@ import { ViewUxService } from '../../services/view-ux.service';
 })
 export class InicioPageComponent implements OnInit {
 
-  name:string ="";
+  @Input() titulo:string ="";
   boxs:number[] = [1,2,3,4]; // [1,2,3,4,5,6,7,8,9,10];
   data:CardData[]=[];
+  dataEstadistico : number = 0;
+
   @Input() menunum : number = 0
 
   menus: CardData[] = [
@@ -128,12 +130,16 @@ export class InicioPageComponent implements OnInit {
   
 
   constructor(private _srvMenu: ViewUxService) { 
-
+    this.dataEstadistico = 0;
   }
-
+  
   ngOnInit(): void {
     //console.log(this.menunum);
+    this.dataEstadistico = 0;
+    this.dataEstadistico =  this.menus.filter( x => x.position === this.menunum! )[0].numero!;
     this.data = this.menus.filter( x => x.position === this.menunum! );
+    //console.log(this.dataEstadistico);
+    
 
     // this._srvMenu.getMenu().subscribe(resp => {
     //   this.name = resp.title!;

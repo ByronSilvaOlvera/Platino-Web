@@ -60,7 +60,6 @@ export class CitaComponent implements OnInit {
 
   dataGrid(page: number) {
     this.spinner.show();
-    console.log(this.menu.title);
 
     this._srventidad.getAllEntidad(page).subscribe(
       (data) => {

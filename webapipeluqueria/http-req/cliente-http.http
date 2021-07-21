@@ -72,6 +72,9 @@ Content-Type: application/json
     "apellidos": "Olvera Pazmino"
 }
 
+######
+
+DELETE http://localhost:8092/peluqueria/api/cliente/delete/60f79b8680cf0a80201c791a/ HTTP/1.1
 
 
 

@@ -12,3 +12,5 @@ server.listen( process.env.PORT || 3000 , ( err ) => {
     console.log('Servidor corriendo en puerto', process.env.PORT );
 
 });
+
+module.exports = server;

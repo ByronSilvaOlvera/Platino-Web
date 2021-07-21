@@ -16,6 +16,9 @@
     </div>
   </div>
   <div class="card estadistica-page" *ngIf="data.length > 0">
-    <h5 class="card-title">Estadisticas de {{ name }}</h5>
+    <h5 class="card-title">Estadisticas de {{ titulo }}</h5>
+  </div>
+  <div *ngIf="dataEstadistico > 0 && data.length > 0" >
+    <app-charts-data-object  [valor]="dataEstadistico"  ></app-charts-data-object>
   </div>
 </div>

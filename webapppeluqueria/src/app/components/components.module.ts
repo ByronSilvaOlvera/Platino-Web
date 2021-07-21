@@ -9,8 +9,11 @@ import { InicioPageComponent } from './inicio-page/inicio-page.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { DeleteMsgComponent } from './delete-msg/delete-msg.component';
 import { SharedModule } from '../shared/shared.module';
+import { ChartsDataObjectComponent } from './charts-data-object/charts-data-object.component';
 
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -18,20 +21,26 @@ import { SharedModule } from '../shared/shared.module';
     GridDataComponent,
     InicioPageComponent,
     InputFormComponent,
-    DeleteMsgComponent
+    DeleteMsgComponent,
+    ChartsDataObjectComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     SharedModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   exports : [
     GridDataComponent,
     InicioPageComponent,
     InputFormComponent,
-    DeleteMsgComponent
-
+    DeleteMsgComponent,
+    ChartsDataObjectComponent
+    
   ]
 })
 export class ComponentsModule { }

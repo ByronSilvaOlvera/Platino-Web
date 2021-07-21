@@ -23,6 +23,13 @@ export interface CardData {
     position?: number;
 }
 
+export interface DatosEstaditico{
+    campo1:number;
+    campo2:number;
+    campo3:number;
+    campo4:number;
+}
+
 export interface uidTipo{
     uid?: string;
     tipo?: string;
