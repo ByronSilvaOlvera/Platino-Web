@@ -47,15 +47,17 @@ export class CitaComponent implements OnInit {
   ngOnInit(): void {
     //Obtiene el menu
     this._srvMenu.getMenu().subscribe((menu) => (this.menu = menu));
+    
+    /// Selecciona el menu con la ruta del navegador
+    this._srvMenu.addRuta(this.router.url);
+    
     // CAbezera de TABla
     this.createHeader();
     // INICIO DE
 
     //CARGO los DATOS
-    this.dataGrid(this.page);
+    this.dataGrid(this.page | 1 );
 
-    /// Selecciona el menu con la ruta del navegador
-    this._srvMenu.addRuta(this.router.url);
   }
 
   dataGrid(page: number) {
@@ -63,7 +65,7 @@ export class CitaComponent implements OnInit {
 
     this._srventidad.getAllEntidad(page).subscribe(
       (data) => {
-        if (data.ok) {
+        if (data.ok && data.citas.length > 0) {
           this.citas = [];
           this.numpage = data.page.length;
 
