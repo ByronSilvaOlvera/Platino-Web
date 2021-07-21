@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ViewUxService } from '../../../services/view-ux.service';
 import { Cliente } from '../../../models/cliente';
@@ -15,13 +15,16 @@ export class DetalleClienteComponent implements OnInit {
 
   subcripcion: Subscription;
   cliente: Cliente = {nombres:''};
+  @Input() titulo:string='Detalle del Cliente';
+  @Input() estado:boolean=true;
 
   uid:string='';
 
   constructor(private _srvMenu: ViewUxService,
     private _srvcliente: ClienteService
     ,private spinner: NgxSpinnerService
-    ,private snotifyService: SnotifyService) { 
+    ,private snotifyService: SnotifyService
+    ) { 
 
     this.subcripcion = this._srvMenu.getUId().subscribe( d => {
       this.uid = d.uid!;

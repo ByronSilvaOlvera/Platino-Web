@@ -1,12 +1,13 @@
 import { createReducer, on , Action} from '@ngrx/store';
 import { Paginacion } from '../models/menu';
-import { increment, decrement, reset, movimiento, bloqueada, completa, incompleta, countpage, componente } from './page.actions';
+import { increment, decrement, reset, movimiento, bloqueada, completa, incompleta, countpage, componente, uidComponente } from './page.actions';
 
-export const page:Paginacion={ page:1, completa:true, numberPage:0 };
+export const page:Paginacion={ page:1, completa:true, numberPage:0 , uid : ''};
 export const pageEstado:boolean=true;
 
 const _pageReducer = createReducer(
   page,
+  on(uidComponente, (state, { uid }  ) => ( { ...state , uid : uid}) ),
   on(increment, (state  ) => ( { ...state , page : state.page! + 1}) ),
   on(completa, (state ) => ( { ...state , completa : false, page : state.page! - 1 }) ),
   on(incompleta, (state ) => ( { ...state , completa : true }) ),

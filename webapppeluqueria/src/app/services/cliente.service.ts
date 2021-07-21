@@ -38,5 +38,11 @@ export class ClienteService {
     let url = `${this.urlbase}/cliente/edit/${uid}/`;
     return this.http.put<ResponseCliente>(url, data)
   }
+  
+  deleteEntidad(uid:string) : Observable<ResponseCliente>{
+    let url = `${this.urlbase}/cliente/delete/${uid}/`;
+    return this.http.delete<ResponseCliente>(url)
+    
+  }
 
 }

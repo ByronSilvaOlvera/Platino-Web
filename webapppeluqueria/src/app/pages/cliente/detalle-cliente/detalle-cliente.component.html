@@ -1,5 +1,5 @@
 <div class="detalle-box">
-  <app-estado-id [uid]="uid" contenido="Detalle del Cliente" [view]="true" ></app-estado-id>
+  <app-estado-id [uid]="uid" [contenido]="titulo" [view]="true" ></app-estado-id>
 
   <div class="card">
     <div class="card-title">
@@ -8,7 +8,7 @@
     <hr />
     <div class="card-division">
       <div class="card-left">
-        <i class="fas fa-user-tag"></i>
+        <i [ngClass]=" estado ? 'fas fa-user-tag ': 'fas fa-user-tag text-danger'  "></i>
       </div>
       <div class="card-rigth">
         <p class="card-text"><b>Nombre:</b> {{ cliente.nombres! }}</p>

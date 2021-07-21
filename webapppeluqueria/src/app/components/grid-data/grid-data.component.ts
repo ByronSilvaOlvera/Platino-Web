@@ -6,7 +6,7 @@ import { Subscription, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { decrement, incompleta, increment } from 'src/app/store/page.actions';
 import { AppState, Paginacion, Menu } from '../../models/menu';
-import { reset, componente } from '../../store/page.actions';
+import { reset, componente, uidComponente } from '../../store/page.actions';
 
 
 
@@ -32,6 +32,7 @@ export class GridDataComponent implements OnInit {
   constructor(private _srvMenu: ViewUxService
     ,private spinner: NgxSpinnerService
     ,private store: Store<AppState>
+  
     ) {
       
       this.store.select("page").subscribe( x => {
@@ -67,18 +68,21 @@ export class GridDataComponent implements OnInit {
   }
 
   onDelete(uid:string){
-    //console.log(uid);
-    // ir opciion eliminar
-    this._srvMenu.addOption(5);
-    //this._srvMenu.addUId(uid);
     
+    this._srvMenu.addOption(5);
+    this.spinner.show();
+    setTimeout( () => {
+      this._srvMenu.addUId({uid:uid,tipo:'D'});
+    }, 1000)
+
+    this.store.dispatch(uidComponente({ uid : uid }));
     
   }
   onDetalle(uid:string){
     //console.log(uid);
     // ir opcion detalle
     this._srvMenu.addOption(4);
-
+    
     this.spinner.show();
     setTimeout( () => {
       this._srvMenu.addUId({uid:uid,tipo:'D'});

@@ -112,9 +112,34 @@ const UpdateEntity = async (req=request, res=response) => {
         })
     }
 }
+
+const Atencion = require("../models/atencion-model");
+const Cita = require("../models/cita-model");
+
 const deleteEntity = async (req=request, res=response) => {
     try {
         const id = req.params.id;
+
+        cita = await Cita.find({idcliente : id})
+            .exec();
+        console.log(cita, cita.length);
+        if(cita.length > 0){
+            res.status(200).json({
+                ok:false,
+                msg:`No se puede eliminar cliente! Contiene Citas`
+            });
+            return
+        }
+
+        atencion = await Atencion.find({ idcliente: id}).exec();
+        if(atencion.length > 0){
+            res.status(200).json({
+                ok:false,
+                msg:`No se puede eliminar cliente. Tiene Atenciones`
+            });
+            return
+        }
+
         const deleted = await Cliente.deleteOne( { _id : id } ).exec();            
         if(deleted.ok === 1){
             res.status(200).json({

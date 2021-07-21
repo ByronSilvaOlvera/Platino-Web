@@ -9,6 +9,7 @@ import { SnotifyService } from 'ng-snotify';
 import { Store } from '@ngrx/store';
 import { decrement, reset } from '../../store/page.actions';
 import { Router } from '@angular/router';
+import { AppState } from 'src/app/models/menu';
 
 @Component({
   selector: 'app-cliente',
@@ -32,6 +33,8 @@ export class ClienteComponent implements OnInit {
     ,private spinner: NgxSpinnerService
     ,private snotifyService: SnotifyService
     ,private router: Router
+    ,private store: Store<AppState>
+  
     ) { 
      
      // SUB MENU
@@ -102,6 +105,27 @@ export class ClienteComponent implements OnInit {
     this.dataGrid(1);
     this.page = 1;
     this.updateTable = false;
+  }
+
+  onDelete(){
+    
+    let id='';
+    this.store.select('page').subscribe( x => id = x?.uid!)
+                  
+    this._srventidad.deleteEntidad(id).subscribe( data => {
+      if(data.ok){
+        this.snotifyService.success('Cliente eliminado');
+    
+      }
+      else{
+        this.snotifyService.warning('No se puede eliminar el Cliente '+ data.msg);
+     
+      }
+    }, err => {
+      this.snotifyService.error('Web Service no responde '+ err );
+      
+    })
+
   }
 
   createHeader(){

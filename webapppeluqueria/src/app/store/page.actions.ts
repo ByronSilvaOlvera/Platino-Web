@@ -2,6 +2,8 @@ import { createAction, props } from '@ngrx/store';
 import { Paginacion } from '../models/menu';
 
 
+export const uidComponente = createAction('[Page Component] Uid' ,
+ props<{uid : string } >()  );
 
 export const increment = createAction('[Page Component] Increment' );
 

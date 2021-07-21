@@ -40,6 +40,7 @@ export interface Paginacion{
     completa?: boolean;
     numberPage?: number;
     componente?: string;
+    uid?: string;
 }
 
 export interface AppState{
