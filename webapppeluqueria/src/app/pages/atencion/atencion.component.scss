@@ -3,9 +3,21 @@
     width: 98%;
     border: 1px solid #ff000026;
     padding: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     button{
         width: 110px;
         margin-right: 2rem;
         color: #410a44;
+    }
+    div{
+        width: 20px;
+    }
+    .spinner-border{
+        width: 30px;
+        height: 30px;
     }
 }

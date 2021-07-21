@@ -68,11 +68,11 @@ export class ClienteComponent implements OnInit {
           })
           this.page = p
           this.spinner.hide();
-        }else{         
+        }else{      
           this.pagemov = false;
           --this.page;
           this.spinner.hide();
-          this.snotifyService.info('Clientes completos')
+          //this.snotifyService.info('Clientes completos')
         }
         
       }, err => {

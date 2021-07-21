@@ -10,7 +10,7 @@
             [table]="citas" namePage="Citas" [numpage]="numpage" 
             [menu]="menu" >
         </app-grid-data>    
-        <div class="table-page">
+        <div class="table-page" *ngIf="citas.length > 0" >
             <button type="button" class="btn btn-outline-info"
              (click)="onPageAnterior()" >
                 <i class="fas fa-arrow-left"></i>

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { GridTable, HeaderGridTable } from '../../models/grid-table';
-import { ViewUxService } from '../../services/view-ux.service';
+import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { CitasService } from '../../services/citas.service';
-import * as moment from 'moment';
+
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SnotifyService } from 'ng-snotify';
-import { Store } from '@ngrx/store';
-import { decrement, reset } from 'src/app/store/page.actions';
+
+import * as moment from 'moment';
+
 import { AppState, Menu, Paginacion } from '../../models/menu';
-import { completa, countpage } from '../../store/page.actions';
-import { Router } from '@angular/router';
+import { GridTable, HeaderGridTable } from '../../models/grid-table';
+import { CitasService } from '../../services/citas.service';
+import { ViewUxService } from '../../services/view-ux.service';
 
 @Component({
   selector: 'app-cita',
@@ -56,7 +56,7 @@ export class CitaComponent implements OnInit {
     // INICIO DE
 
     //CARGO los DATOS
-    this.dataGrid(this.page | 1 );
+    this.dataGrid(this.page);
 
   }
 
@@ -82,7 +82,7 @@ export class CitaComponent implements OnInit {
           this.pagemov = false;
           --this.page;
           this.spinner.hide();
-          this.snotifyService.info('Numero de Citas completas');
+          //this.snotifyService.info('Numero de Citas completas');
           
         }
       },

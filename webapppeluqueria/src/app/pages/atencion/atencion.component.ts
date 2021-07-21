@@ -7,10 +7,10 @@ import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
-import { Store } from '@ngrx/store';
-import { AppState, Menu } from 'src/app/models/menu';
-import { Paginacion } from '../../models/menu';
-import { completa } from '../../store/page.actions';
+import { Menu } from 'src/app/models/menu';
+
+
+
 
 @Component({
   selector: 'app-atencion',
@@ -45,8 +45,6 @@ export class AtencionComponent implements OnInit {
       this.seleccion = s;
       this.spinner.hide();
     });
-
-   
 
   }
 
@@ -85,7 +83,7 @@ export class AtencionComponent implements OnInit {
             this.pagemov = false;
             --this.page;
             this.spinner.hide();
-            this.snotifyService.info(`las atenciones estan completas`);
+            //this.snotifyService.info(`las atenciones estan completas`);
             
           }
         },
@@ -109,6 +107,15 @@ export class AtencionComponent implements OnInit {
       this.dataGrid(--this.page);
     }
     if(this.pagemov === false){ this.pagemov = true }
+  }
+
+  updateTable:boolean=false;
+
+  onActualiza(){
+    this.updateTable = true;
+    this.dataGrid(1);
+    this.page = 1;
+    this.updateTable = false;
   }
 
   createHeader() {

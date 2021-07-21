@@ -9,7 +9,7 @@
         <app-grid-data title="Listado de Clientes" [header]="header" 
             [table]="clientes" namePage="Clientes"  >
         </app-grid-data>    
-        <div class="table-page">
+        <div class="table-page" *ngIf="clientes.length > 0" >
             <button type="button" class="btn btn-outline-info"
              (click)="onPageAnterior()" >
                 <i class="fas fa-arrow-left"></i>
