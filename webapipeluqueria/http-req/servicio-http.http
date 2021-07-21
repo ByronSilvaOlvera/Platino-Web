@@ -78,6 +78,10 @@ Content-Type: application/json
 }
 
 
+#### 60f23228cd4a766a1c913aa0
+
+DELETE http://localhost:8092/peluqueria/api/servicio/delete/60f23228cd4a766a1c913aa0/ HTTP/1.1
+
 
 
 

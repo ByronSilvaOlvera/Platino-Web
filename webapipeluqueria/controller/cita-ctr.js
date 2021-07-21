@@ -134,13 +134,31 @@ const UpdateEntity = async (req=request, res=response) => {
 }
 const deleteEntity = async (req=request, res=response) => {
     try {
-        
+        const id = req.params.id;
+        const deleted = await Cita.deleteOne( { _id : id } ).exec();            
+        if(deleted.ok === 1){
+            res.status(200).json({
+                ok:true,
+                msg:`La cita # ${id} eliminada con exito!`
+            });
+        }else{
+            res.status(404).json({
+                ok:false,
+                msg:`Ocurrio un error al eliminar cita # ${id}`
+            });
+        }
+
+
     } catch (error) {
         console.log('Error ', error);
+        res.status(404).json({
+            ok: false,
+            msg: 'Eliminar cita: '+error
+        })
     }
 }
 
 module.exports = {
     addEntity, getAllEntity, getEntity, UpdateEntity,
-    getCitaCliente
+    getCitaCliente, deleteEntity
 }

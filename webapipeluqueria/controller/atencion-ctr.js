@@ -140,12 +140,31 @@ const UpdateEntity = async (req=request, res=response) => {
 }
 const deleteEntity = async (req=request, res=response) => {
     try {
-        
+        const id = req.params.id;
+        const deleted = await Atencion.deleteOne( { _id : id } ).exec();            
+        if(deleted.ok === 1){
+            res.status(200).json({
+                ok:true,
+                msg:`La atenccion de ${id} eliminacion exitosa`
+            });
+        }else{
+            res.status(404).json({
+                ok:false,
+                msg:`Ocurrio un error al eliminar la Atencion con ${id}`
+            });
+        }
+
+
     } catch (error) {
         console.log('Error ', error);
+        res.status(404).json({
+            ok: false,
+            msg: 'Eliminar Atencion: '+error
+        })
     }
 }
 
 module.exports = {
-    addEntity, getAllEntity, getEntity, UpdateEntity, getAllEntityFilter
+    addEntity, getAllEntity, getEntity, 
+    UpdateEntity, getAllEntityFilter, deleteEntity
 }

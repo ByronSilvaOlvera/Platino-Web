@@ -133,7 +133,7 @@ const deleteEntity = async (req=request, res=response) => {
         console.log('Error ', error);
         res.status(404).json({
             ok: false,
-            msg: 'Actulizar cliente: '+error
+            msg: 'Eliminar cliente: '+error
         })
     }
 }

@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { addEntity, getAllEntity, getEntity,
-    UpdateEntity, getAllEntityFilter } = require('../controller/atencion-ctr');
+    UpdateEntity, getAllEntityFilter,
+    deleteEntity } = require('../controller/atencion-ctr');
 
 
 const router = Router();
@@ -11,6 +12,7 @@ router.get('/one/:id/', getEntity );
 router.put('/edit/:id/', UpdateEntity );
 router.put('/edit/:id/', UpdateEntity );
 router.post('/all/fecha/', getAllEntityFilter );
+router.delete('/delete/:id/', deleteEntity)
 
 module.exports = router;
 
