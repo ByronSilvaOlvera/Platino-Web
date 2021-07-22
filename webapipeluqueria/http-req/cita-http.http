@@ -70,7 +70,7 @@ Content-Type: application/json
 
 #####
 
-DELETE http://localhost:8092/peluqueria/api/cita/delete/60f7b4d583f3573f2c09b153/ HTTP/1.1
+DELETE http://localhost:8092/peluqueria/api/cita/delete/60f8e127bec2152eb0452b70/ HTTP/1.1
 
 
 

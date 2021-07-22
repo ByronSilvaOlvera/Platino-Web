@@ -11,6 +11,7 @@ import { AppState, Menu, Paginacion } from '../../models/menu';
 import { GridTable, HeaderGridTable } from '../../models/grid-table';
 import { CitasService } from '../../services/citas.service';
 import { ViewUxService } from '../../services/view-ux.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cita',
@@ -37,6 +38,7 @@ export class CitaComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private snotifyService: SnotifyService,
     private router: Router
+    ,private store: Store<AppState>
   ) {
     // Click en el submenu
     this.subcripcion = this._srvMenu
@@ -113,6 +115,27 @@ export class CitaComponent implements OnInit {
     this.dataGrid(1);
     this.page = 1;
     this.updateTable = false;
+  }
+
+  onDelete(){
+    
+    let id='';
+    this.store.select('page').subscribe( x => id = x?.uid!)
+                  
+    this._srventidad.deleteEntidad(id).subscribe( data => {
+      if(data.ok){
+        this.snotifyService.success('Cliente eliminado');
+    
+      }
+      else{
+        this.snotifyService.warning('No se puede eliminar el Cliente '+ data.msg);
+     
+      }
+    }, err => {
+      this.snotifyService.error('Web Service no responde '+ err );
+      
+    })
+
   }
 
   createHeader() {

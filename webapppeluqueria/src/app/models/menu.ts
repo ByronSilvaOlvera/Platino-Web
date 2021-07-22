@@ -43,6 +43,18 @@ export interface Paginacion{
     uid?: string;
 }
 
+export interface EntidadComponente{
+    uid?: string;
+    page?: number;
+    pageEstado?: boolean;
+    pageNumber?:number;
+    componente?: string;
+}
+
+export interface TipoTransaccion{
+    tipo?: number;
+}
+
 export interface AppState{
     page?:Paginacion
   }

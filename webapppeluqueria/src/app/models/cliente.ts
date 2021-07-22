@@ -2,6 +2,7 @@ export interface ResponseCliente {
     ok:      boolean;
     cliente: Cliente;
     msg: string;
+    listado: number;
 }
 
 export interface Cliente {

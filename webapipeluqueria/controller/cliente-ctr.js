@@ -75,11 +75,13 @@ const getAllEntity = async (req=request, res=response) => {
             res.status(200).json({
                 ok:true,
                 page:num,
+                listado:clientes.length,
                 clientes
             });
         }else{
             res.status(200).json({
                 ok:false,
+
                 msg:'Paginacion completa'                
             });
         }
@@ -120,9 +122,8 @@ const deleteEntity = async (req=request, res=response) => {
     try {
         const id = req.params.id;
 
-        cita = await Cita.find({idcliente : id})
-            .exec();
-        console.log(cita, cita.length);
+        cita = await Cita.find({idcliente : id}).exec();
+        
         if(cita.length > 0){
             res.status(200).json({
                 ok:false,

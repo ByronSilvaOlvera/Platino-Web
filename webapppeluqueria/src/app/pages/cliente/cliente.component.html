@@ -3,36 +3,10 @@
 </div>
 
 <div class="cliente-opciones " >
+    
     <!-- List -->
-
     <div class="pg-cliente" *ngIf="seleccion == 1">
-        <app-grid-data title="Listado de Clientes" [header]="header" 
-            [table]="clientes" namePage="Clientes"  >
-        </app-grid-data>    
-        <div class="table-page" *ngIf="clientes.length > 0" >
-            <button type="button" class="btn btn-outline-info"
-             (click)="onPageAnterior()" >
-                <i class="fas fa-arrow-left"></i>
-            </button>
-    
-            <button type="button" class="btn btn-outline-primary">
-                Pagina <span class="badge bg-secondary">{{ page }}</span>
-            </button>
-    
-            <button type="button" class="btn btn-outline-info"
-             (click)="onPageSiguiente()" >
-                <i class="fas fa-arrow-right"></i>
-            </button>
-
-            <button  (click)="onActualiza()" type="button" class="btn btn-outline-info">
-                <i class="fas fa-upload"></i> Update
-            </button>
-
-            <div class="spinner-border" role="status" *ngIf="updateTable" >
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            
-        </div>
+       <app-lista-clientes [clientes]="clientes"   ></app-lista-clientes>
     </div>
     
     <!-- Create -->
@@ -45,14 +19,12 @@
     </div>
     <!-- Detalle -->
     <div *ngIf="seleccion == 4" >
-        <app-detalle-cliente></app-detalle-cliente>
+        <app-detalle-cliente [uid]="uid" ></app-detalle-cliente>
     </div>
     <!-- Delete -->
     <div *ngIf="seleccion == 5"  class="delete-box" >
         <app-detalle-cliente titulo="Eliminar Cliente" [estado]="false" ></app-detalle-cliente>
-       <div>
-           <button (click)="onDelete()" class="btn btn-outline-danger">  <i class="fas fa-trash"></i> Eliminar </button>
-       </div>
+       
     </div>
 </div>
 

@@ -22,5 +22,8 @@
         </p>
       </div>
     </div>
+    <div class="btn-detalle" *ngIf="!estado" >
+      <button (click)="onDelete()" class="btn btn-outline-danger">  <i class="fas fa-trash"></i> Eliminar </button>
+    </div>
   </div>
 </div>

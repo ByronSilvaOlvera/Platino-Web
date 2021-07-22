@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Cita } from '../../../models/cita';
 import { Subscription } from 'rxjs';
 import { ViewUxService } from '../../../services/view-ux.service';
 import { CitasService } from '../../../services/citas.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SnotifyService } from 'ng-snotify';
 
 
 @Component({
@@ -16,11 +17,13 @@ export class DetalleCitaComponent implements OnInit {
   subcripcion: Subscription;
   cita: Cita = {idcliente:{nombres:"", apellidos:""}};
   uid : string = "";
-
+  @Input() estado : boolean = true;
 
   constructor(private _srvMenu: ViewUxService
     ,private _srventidad : CitasService
-    ,private spinner: NgxSpinnerService) { 
+    ,private spinner: NgxSpinnerService
+    ,private snotifyService: SnotifyService,
+    ) { 
 
     //SUBCRIPCION UID
     this.subcripcion = this._srvMenu.getUId().subscribe( uid => {
@@ -62,6 +65,21 @@ export class DetalleCitaComponent implements OnInit {
         }
       }
     )
+  }
+
+  onDelete(cita:Cita){
+    this._srventidad.deleteEntidad(cita._id!).subscribe( data => {
+      if(data.ok){
+        this.snotifyService.success('Cita eliminada')
+      }
+      else{
+        this.snotifyService.warning('Cita no pudo ser eliminada. Tiene asignada una Atencion')
+        
+      }
+    }, err => {
+      this.snotifyService.error('Servicio web error ' + err)
+
+    })
   }
 
 

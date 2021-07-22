@@ -50,9 +50,14 @@
         <app-detalle-cita></app-detalle-cita>
     </div>  
     <!-- Delete -->
-    <div *ngIf="seleccion == 5"   >
-       <app-delete-msg></app-delete-msg>
+    <div *ngIf="seleccion == 5"   class="delete-box" >
+        <app-detalle-cita [estado]="false" ></app-detalle-cita>
+       
     </div>
+
+   
+
+
 </div>
 
 <ng-snotify></ng-snotify>

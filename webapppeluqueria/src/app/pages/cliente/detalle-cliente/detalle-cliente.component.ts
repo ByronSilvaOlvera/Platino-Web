@@ -5,6 +5,9 @@ import { Cliente } from '../../../models/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SnotifyService } from 'ng-snotify';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/models/menu';
+import { uidComponente } from '../../../store/page.actions';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -17,18 +20,19 @@ export class DetalleClienteComponent implements OnInit {
   cliente: Cliente = {nombres:''};
   @Input() titulo:string='Detalle del Cliente';
   @Input() estado:boolean=true;
-
-  uid:string='';
+  @Input() uid:string="";
 
   constructor(private _srvMenu: ViewUxService,
     private _srvcliente: ClienteService
     ,private spinner: NgxSpinnerService
     ,private snotifyService: SnotifyService
+    ,private store: Store<AppState>
+    ,private _srventidad : ClienteService
     ) { 
 
     this.subcripcion = this._srvMenu.getUId().subscribe( d => {
       this.uid = d.uid!;
-      
+      console.log(this.uid);  
       if( d.uid?.length! > 0 ){
 
         this._srvcliente.getEntidad(d.uid!).subscribe( data => 
@@ -40,28 +44,55 @@ export class DetalleClienteComponent implements OnInit {
             }  
             // mostrar
           })
-
+          
         }else{
           this.spinner.hide();
-
+          
         }
-    });
-
+      });
+      
+      //this.store.select('page').subscribe( x => this.uid = x?.uid!)  
+      
   }
-
-    buscarCliente(uid:string){
-      this.spinner.show();
-      this._srvcliente.getEntidad(uid).subscribe( data => 
-        {
-          this.cliente = data.cliente 
-          this.spinner.hide()
-        })
-    
-    }
   
-
   ngOnInit(): void {
+    console.log(this.uid);
+    
+    
   }
+
+    // buscarCliente(uid:string){
+    //   this.spinner.show();
+    //   this._srvcliente.getEntidad(uid).subscribe( data => 
+    //     {
+    //       this.cliente = data.cliente 
+    //       this.spinner.hide()
+    //     })
+    
+    // }
+    
+    onDelete(){
+    
+      let id='';
+      this.store.select('page').subscribe( x => id = x?.uid!)
+                    
+      this._srventidad.deleteEntidad(id).subscribe( data => {
+        if(data.ok){
+          this.snotifyService.success('Cliente eliminado');
+          this.store.dispatch(uidComponente({uid : "" }))
+      
+        }
+        else{
+          this.snotifyService.warning('No se puede eliminar el Cliente '+ data.msg);
+       
+        }
+      }, err => {
+        this.snotifyService.error('Web Service no responde '+ err );
+        
+      })
+    }
+
+  
 
 
 

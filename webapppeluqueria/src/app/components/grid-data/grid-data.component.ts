@@ -22,6 +22,7 @@ export class GridDataComponent implements OnInit {
   @Input() header:HeaderGridTable [] = [];
   @Input() namePage:string=''
   @Input() numpage:number= 0;
+  @Input() componente:string='';
   
 
   @Input() title:string = "";
@@ -42,6 +43,7 @@ export class GridDataComponent implements OnInit {
     }
     
     ngOnInit(): void {
+      console.log(this.table.length);
       
     //En que componente se carga el Grid-table
     this.store.dispatch(reset( ));
@@ -75,6 +77,7 @@ export class GridDataComponent implements OnInit {
       this._srvMenu.addUId({uid:uid,tipo:'D'});
     }, 1000)
 
+    // GUARDO EL UID ENSTORE
     this.store.dispatch(uidComponente({ uid : uid }));
     
   }
@@ -88,6 +91,9 @@ export class GridDataComponent implements OnInit {
       this._srvMenu.addUId({uid:uid,tipo:'D'});
     }
     ,1000)
+
+    // GUARDO EL UID ENSTORE
+    this.store.dispatch(uidComponente({ uid : uid }));
     
     // subcripcion id
     

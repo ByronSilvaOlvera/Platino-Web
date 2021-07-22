@@ -38,6 +38,11 @@ export class CitasService {
     let url = `${this.urlbase}/cita/cliente/${uid}/`;
     return this.http.get<ResponseCita>(url)
   }
+  
+  deleteEntidad(uid:string) : Observable<ResponseCita>{
+    let url = `${this.urlbase}/cita/delete/${uid}/`;
+    return this.http.delete<ResponseCita>(url)
+  }
 
 
 }

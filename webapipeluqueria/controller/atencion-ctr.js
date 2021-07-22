@@ -141,6 +141,7 @@ const UpdateEntity = async (req=request, res=response) => {
 const deleteEntity = async (req=request, res=response) => {
     try {
         const id = req.params.id;
+
         const deleted = await Atencion.deleteOne( { _id : id } ).exec();            
         if(deleted.ok === 1){
             res.status(200).json({

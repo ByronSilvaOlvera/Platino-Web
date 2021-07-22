@@ -29,6 +29,11 @@ export class ViewUxService {
 
   // Ruta
 
+  /** Actuliza la ruta
+   * 
+   * 
+   */
+  
   addRuta(n:string){
     this.ruta = n;
     this.rutaLink$.next(this.ruta);
@@ -82,6 +87,10 @@ export class ViewUxService {
     this.opcion = n;
     this.opcion$.next(this.opcion);
   }
+  /**
+   * Obtine el submenu
+   * @returns 
+   */
   getOption() : Observable<number>{
     return this.opcion$.asObservable();
   }

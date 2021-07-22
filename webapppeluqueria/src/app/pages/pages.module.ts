@@ -30,6 +30,8 @@ import { pageReducer } from '../store/page.reducer';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ListaClientestComponent } from './cliente/lista-clientes/lista-clientes.component';
+
 
 
 
@@ -48,6 +50,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     DetalleCitaComponent,
     FormAtencionComponent,
     DetalleAtencionComponent,
+    ListaClientestComponent,
   ],
   imports: [
     NgxSpinnerModule,
