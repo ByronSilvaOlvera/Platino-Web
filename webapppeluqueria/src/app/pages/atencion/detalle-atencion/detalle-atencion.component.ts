@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Atencion } from 'src/app/models/atencion';
 import { ViewUxService } from '../../../services/view-ux.service';
 import { Subscription } from 'rxjs';
@@ -19,6 +19,7 @@ export class DetalleAtencionComponent implements OnInit {
   atencion: Atencion = {idcliente:{nombres:"", apellidos:""}};
   uid : string = "";
   servicios : Servicio [] = [];
+  @Input() estado:boolean=true;
 
   constructor(private _srvMenu: ViewUxService
     ,private _srventidad : AtencionService
@@ -31,7 +32,7 @@ export class DetalleAtencionComponent implements OnInit {
       if( uid.uid?.length! > 0 ){
 
         this._srventidad.getEntidad(uid.uid!).subscribe( data => {
-          if(data.ok){
+          if(data.ok && data.atencion?._id?.length! > 0){
             
             this.atencion = data.atencion!;            
             
@@ -55,6 +56,9 @@ export class DetalleAtencionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onDelete(){
+    
+  }
 
   obtenerServicio(ser: Idservicio[]){
    

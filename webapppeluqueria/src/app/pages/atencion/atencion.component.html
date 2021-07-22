@@ -6,31 +6,7 @@
     <!-- List -->
 
     <div class="pg-cliente" *ngIf="seleccion == 1">
-        <app-grid-data title="Listado de Atenciones de cliente" [header]="header"
-            [table]="atencion" namePage="Atenciones" [menu]="menu">
-        </app-grid-data>    
-        <div class="table-page" *ngIf="atencion.length > 0" >
-            <button type="button" class="btn btn-outline-info"
-             (click)="onPageAnterior()" >
-                <i class="fas fa-arrow-left"></i>
-            </button>
-    
-            <button type="button" class="btn btn-outline-primary">
-                Pagina <span class="badge bg-secondary">{{ page }}</span>
-            </button>
-    
-            <button type="button" class="btn btn-outline-info"
-             (click)="onPageSiguiente()" >
-                <i class="fas fa-arrow-right"></i>
-            </button>
-            
-            <button  (click)="onActualiza()" type="button" class="btn btn-outline-info">
-                <i class="fas fa-upload"></i> Update
-            </button>
-            <div class="spinner-border" role="status" *ngIf="updateTable" >
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
+        <app-lista-atenciones [atenciones]="atencion" ></app-lista-atenciones>
     </div>
     
     <!-- Create -->
@@ -47,7 +23,7 @@
     </div>
     <!-- Delete -->
     <div *ngIf="seleccion == 5"   >
-       <app-delete-msg></app-delete-msg>
+        <app-detalle-atencion [estado]="false" ></app-detalle-atencion>
     </div>
 </div>
 

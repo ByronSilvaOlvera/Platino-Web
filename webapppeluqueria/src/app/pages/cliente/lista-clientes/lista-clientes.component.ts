@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { SnotifyService } from 'ng-snotify';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -5,6 +6,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { GridTable, HeaderGridTable } from 'src/app/models/grid-table';
 import { ClienteService } from '../../../services/cliente.service';
 import { ClientesStore } from '../cliente.store';
+import { uidComponente } from '../../../store/page.actions';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -28,6 +30,7 @@ export class ListaClientestComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    console.log(`list cliente`);
     this.createHeader();
 
     this.clienteStore.selectEstdoComponente().subscribe(
@@ -95,6 +98,11 @@ export class ListaClientestComponent implements OnInit {
     })
   }
 
+  onActualiza(){
+    this.dataGrid(1);
+    this.page = 1;
+  }
+
 
   createHeader(){
     this.header.push({ camponame : 'Nombres' })
@@ -102,5 +110,11 @@ export class ListaClientestComponent implements OnInit {
     this.header.push({ camponame : 'Direccion' })
   }
 
+  addItem(uid: string) {
+    
+    this.clienteStore.setState( (state)=>  { 
+      return{ ...state,  dataComponente : {uid : uid} }  
+    })
+  }
 
 }

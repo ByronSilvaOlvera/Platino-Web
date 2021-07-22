@@ -35,3 +35,5 @@ export interface IdclienteAt {
     nombres?:   string;
     apellidos?: string;
 }
+
+

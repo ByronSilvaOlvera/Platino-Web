@@ -31,6 +31,8 @@ import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ListaClientestComponent } from './cliente/lista-clientes/lista-clientes.component';
+import { ListaCitasComponent } from './cita/lista-citas/lista-citas.component';
+import { ListaAtencionesComponent } from './atencion/lista-atenciones/lista-atenciones.component';
 
 
 
@@ -51,6 +53,8 @@ import { ListaClientestComponent } from './cliente/lista-clientes/lista-clientes
     FormAtencionComponent,
     DetalleAtencionComponent,
     ListaClientestComponent,
+    ListaCitasComponent,
+    ListaAtencionesComponent,
   ],
   imports: [
     NgxSpinnerModule,

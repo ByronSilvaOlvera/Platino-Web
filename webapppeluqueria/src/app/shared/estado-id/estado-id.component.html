@@ -7,7 +7,7 @@
     
     
     <div class="detalle-uid" *ngIf="view" >
-        <div *ngIf="uid.length > 0" >
+        <div  >
             <span><b>ID</b> </span> 
             <span><b>: {{ uid }}</b></span>
         </div>
@@ -15,7 +15,7 @@
             <button type="button" class="btn btn-light position-relative">
                 Id
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    {{ uid.length > 0?1:0 }}
+                    {{ uid ? 1 : 0 }}
                     <span class="visually-hidden">unread messages</span>
                 </span>
             </button>

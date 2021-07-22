@@ -18,7 +18,7 @@ export interface ComponenteState {
 
     //readonly clientes$ = this.select(state => state.clientes);
 
-    selectEntidad() : Observable<Cliente> {
+    selectEntidad() : Observable<Cliente> | '' {
         return this.select((state) => state.entidad);
     }
     
@@ -27,6 +27,10 @@ export interface ComponenteState {
         
     }
 
+    selectUidEntidad() : Observable<string> {
+      return this.select((state) => state.dataComponente.uid!);
+      
+    }
 
 
   }

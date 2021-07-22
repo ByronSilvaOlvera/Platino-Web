@@ -46,8 +46,7 @@ export class DetalleClienteComponent implements OnInit {
           })
           
         }else{
-          this.spinner.hide();
-          
+          this.spinner.hide();          
         }
       });
       
@@ -56,41 +55,30 @@ export class DetalleClienteComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log(this.uid);
-    
+    console.log(`Det cliente`);
     
   }
 
-    // buscarCliente(uid:string){
-    //   this.spinner.show();
-    //   this._srvcliente.getEntidad(uid).subscribe( data => 
-    //     {
-    //       this.cliente = data.cliente 
-    //       this.spinner.hide()
-    //     })
+  onDelete(){
+  
+    let id='';
+    this.store.select('page').subscribe( x => id = x?.uid!)
+                  
+    this._srventidad.deleteEntidad(id).subscribe( data => {
+      if(data.ok){
+        this.snotifyService.success('Cliente eliminado');
+        this.store.dispatch(uidComponente({uid : "" }))
     
-    // }
-    
-    onDelete(){
-    
-      let id='';
-      this.store.select('page').subscribe( x => id = x?.uid!)
-                    
-      this._srventidad.deleteEntidad(id).subscribe( data => {
-        if(data.ok){
-          this.snotifyService.success('Cliente eliminado');
-          this.store.dispatch(uidComponente({uid : "" }))
+      }
+      else{
+        this.snotifyService.warning('No se puede eliminar el Cliente '+ data.msg);
       
-        }
-        else{
-          this.snotifyService.warning('No se puede eliminar el Cliente '+ data.msg);
-       
-        }
-      }, err => {
-        this.snotifyService.error('Web Service no responde '+ err );
-        
-      })
-    }
+      }
+    }, err => {
+      this.snotifyService.error('Web Service no responde '+ err );
+      
+    })
+  }
 
   
 

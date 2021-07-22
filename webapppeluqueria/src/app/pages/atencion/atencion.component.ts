@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
 import { Menu } from 'src/app/models/menu';
+import { Atencion } from '../../models/atencion';
 
 
 
@@ -20,8 +21,7 @@ import { Menu } from 'src/app/models/menu';
 export class AtencionComponent implements OnInit {
   seleccion: number = 0;
 
-  atencion: GridTable[] = [];
-  header: HeaderGridTable[] = [];
+  atencion:Atencion[]= [];
 
   subcripcion: Subscription;
   page:number=1;
@@ -37,9 +37,6 @@ export class AtencionComponent implements OnInit {
     
   ) {
     
-    // cabezera del data-grid
-    this.createHeader();
-
     // SUB MENU
     this.subcripcion = this._srvMenu.getOption().subscribe((s) => {
       this.seleccion = s;
@@ -70,14 +67,8 @@ export class AtencionComponent implements OnInit {
         (data) => {
           if (data.ok) {
             this.atencion = [];
-            data.atencion?.forEach((x) => {
-              this.atencion.push({
-                campo1: x.idcliente?.nombres! + ' ' + x.idcliente?.apellidos!,
-                campo2: moment(x.fecha, 'YYYY/MM/DD').format('YYYY/MM/DD'),
-                campo3: x.hora,
-                uid: x._id,
-              });
-            });
+            this.atencion = data.atencion!;
+            
             this.spinner.hide();
           } else {
             this.pagemov = false;
@@ -118,9 +109,5 @@ export class AtencionComponent implements OnInit {
     this.updateTable = false;
   }
 
-  createHeader() {
-    this.header.push({ camponame: 'Cliente' });
-    this.header.push({ camponame: 'Fecha' });
-    this.header.push({ camponame: 'Hora' });
-  }
+  
 }

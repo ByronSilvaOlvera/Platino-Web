@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ViewUxService } from '../../services/view-ux.service';
-import { Cliente } from '../../models/cliente';
+import { Cliente, TitulosCliente } from '../../models/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { GridTb, GridTable, HeaderGridTable } from '../../models/grid-table';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -24,10 +24,12 @@ export class ClienteComponent implements OnInit {
 
   seleccion:number=0;
   clientes:Cliente[]=[];
+  titulo:string='';
 
   page:number=1;
   pagemov:boolean=true;
   uid:string="";
+  uidS$ = this.clienteStore.selectUidEntidad() ;
 
   constructor(private _srvMenu: ViewUxService 
     , private _srventidad : ClienteService
@@ -42,10 +44,9 @@ export class ClienteComponent implements OnInit {
      // SUB MENU
     this.subcripcion = _srvMenu.getOption().subscribe( s => {
       this.seleccion = s
+      this.opcionPage(s);
       this.spinner.hide();
-    });
-   
-  
+    });  
   }
 
   ngOnInit(): void {
@@ -62,6 +63,28 @@ export class ClienteComponent implements OnInit {
     
     this.clienteStore.selectEstdoComponente().subscribe( data => this.uid = data.uid! );
     
+  }
+
+  opcionPage(nseleccion:number){
+    switch (nseleccion) {
+      case 1:
+        this.titulo = TitulosCliente.List
+        break;
+      case 2:
+        this.titulo = TitulosCliente.Create
+        break;
+      case 3:
+        this.titulo = TitulosCliente.Update
+        break      
+      case 4:
+        this.titulo = TitulosCliente.Detail
+        break    
+      case 5:
+        this.titulo = TitulosCliente.Delete  
+        break
+      default:
+        break;
+    }
   }
 
   dataGrid(p:number){
@@ -112,8 +135,7 @@ export class ClienteComponent implements OnInit {
   }
 
   
-
-  
+ 
 
 
 }

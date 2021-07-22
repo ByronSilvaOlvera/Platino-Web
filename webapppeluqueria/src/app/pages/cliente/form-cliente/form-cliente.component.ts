@@ -52,6 +52,7 @@ export class FormClienteComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log(`Form cliente`);
   }
 
   onSubmit(){

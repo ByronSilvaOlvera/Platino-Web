@@ -18,12 +18,14 @@ export class ClienteService {
     return this.http.post<ResponseCliente>(url , data);
     
   }
-  
+  /** Obtengo un cliente con id correspodiente 
+   **/
   getEntidad(uid: string) : Observable<ResponseCliente> {
     let url = `${this.urlbase}/cliente/one/${uid}/`;
     return this.http.get<ResponseCliente>(url);
   }
 
+  /** Obtiene todos los clientes */
   getAllEntidad(page : number): Observable<PaginacionCliente>{
     let url = `${this.urlbase}/cliente/all/page/${page}/`;
     return this.http.get<PaginacionCliente>(url)

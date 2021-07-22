@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { decrement, incompleta, increment } from 'src/app/store/page.actions';
 import { AppState, Paginacion, Menu } from '../../models/menu';
 import { reset, componente, uidComponente } from '../../store/page.actions';
+import { Output, EventEmitter } from '@angular/core';
 
 
 
@@ -24,8 +25,9 @@ export class GridDataComponent implements OnInit {
   @Input() numpage:number= 0;
   @Input() componente:string='';
   
+  @Output() newItemEvent = new EventEmitter<string>();
+  
 
-  @Input() title:string = "";
 
   count: Paginacion = {page :0, completa:true, numberPage:0}; 
   @Input() menu:Menu={};
@@ -43,7 +45,7 @@ export class GridDataComponent implements OnInit {
     }
     
     ngOnInit(): void {
-      console.log(this.table.length);
+      //console.log(this.table.length);
       
     //En que componente se carga el Grid-table
     this.store.dispatch(reset( ));
@@ -79,6 +81,8 @@ export class GridDataComponent implements OnInit {
 
     // GUARDO EL UID ENSTORE
     this.store.dispatch(uidComponente({ uid : uid }));
+
+    this.addNewItem(uid);
     
   }
   onDetalle(uid:string){
@@ -96,18 +100,24 @@ export class GridDataComponent implements OnInit {
     this.store.dispatch(uidComponente({ uid : uid }));
     
     // subcripcion id
-    
+    this.addNewItem(uid)
   }
   onEditar(uid:string){
-    //console.log(uid);
-    // ir opciion editar
-    
+        
     this._srvMenu.addOption(3);
     this.spinner.show();
     setTimeout( () => {
       this._srvMenu.addUId({uid:uid,tipo:'U'});
     }, 1000)
+
+    this.addNewItem(uid);
     
+  }
+
+  addNewItem(value: string) {
+    console.log(`emite ${value}`);
+    
+    this.newItemEvent.emit(value);
   }
 
 }

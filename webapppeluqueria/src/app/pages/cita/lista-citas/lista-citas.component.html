@@ -1,0 +1,31 @@
+<app-grid-data namePage="Listado de Citas agendadas" [header]="header"
+            [table]="citasTb"  
+            (newItemEvent)="addItem($event)" 
+            
+            >
+</app-grid-data>    
+<div class="table-page" *ngIf="citasTb.length > 0" >
+    <button type="button" class="btn btn-outline-info"
+        (click)="onPageAnterior()" >
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <button type="button" class="btn btn-outline-primary">
+        Pagina <span class="badge bg-secondary">{{ page }}</span>
+    </button>
+
+    <button type="button" class="btn btn-outline-info"
+        (click)="onPageSiguiente()" >
+        <i class="fas fa-arrow-right"></i>
+    </button>
+
+    <button  (click)="onActualiza()" type="button" class="btn btn-outline-info">
+        <i class="fas fa-upload"></i> Update
+    </button>
+
+    <!-- <div class="spinner-border" role="status" *ngIf="updateTable" >
+        <span class="visually-hidden">Loading...</span>
+    </div> -->
+    
+    
+</div>

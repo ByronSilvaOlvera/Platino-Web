@@ -9,7 +9,7 @@
         </div>
         <div class="card-division" >
             <div class="card-left">
-                <i class="fas fa-headset"></i>
+                <i [ngClass]=" estado ? 'fas fa-headset' : 'fas fa-headset text-danger' "></i>
             </div>
             <div class="card-rigth"  >
                 <p class="card-text"><b>Cliente:</b> 
@@ -27,8 +27,10 @@
                 </div>        
             </div>
         </div>
+        <div class="btn-detalle" *ngIf="!estado" >
+            <button (click)="onDelete()" class="btn btn-outline-danger">  <i class="fas fa-trash"></i> Eliminar </button>
+          </div>
         <!-- <div class="card-box-btn" >
-            <button (click)="onChangeCita(atencion,'Asistio')" type="button" class="btn btn-outline-secondary">Asistio</button>
             <button (click)="onChangeCita(atencion,'No asistio')" type="button" class="btn btn-outline-secondary">Anular</button>
         </div> -->
     </div>

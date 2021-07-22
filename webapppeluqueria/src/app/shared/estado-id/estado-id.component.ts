@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EstadoIDComponent implements OnInit {
 
-  @Input() uid:string='';
+  @Input() uid:string | null = '' ;
   @Input() contenido:string='';
   @Input() view:boolean=true;
 

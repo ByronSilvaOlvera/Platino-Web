@@ -29,11 +29,10 @@ export class ViewUxService {
 
   // Ruta
 
-  /** Actuliza la ruta
+  /** Actualiza la ruta al momento de carga la pagina
    * 
    * 
    */
-  
   addRuta(n:string){
     this.ruta = n;
     this.rutaLink$.next(this.ruta);
@@ -76,19 +75,20 @@ export class ViewUxService {
     this.uid.tipo = uid.tipo;
     this.clienteUid$.next(this.uid);
   }
-  
+  /** Obtengo el ID previamente seleccionado */
   getUId() : Observable<uidTipo> {
     return this.clienteUid$.asObservable();
   }
 
 
   // SUBMENU
+  /** Obtiene el numero del submenu  */
   addOption(n:number){
     this.opcion = n;
     this.opcion$.next(this.opcion);
   }
   /**
-   * Obtine el submenu
+   * Obtiene el submenu seleccionado
    * @returns 
    */
   getOption() : Observable<number>{

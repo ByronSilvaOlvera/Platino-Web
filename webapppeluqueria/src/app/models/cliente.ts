@@ -30,3 +30,11 @@ export interface PaginacionCliente {
     clientes: Cliente[];
     
 }
+
+export enum TitulosCliente {
+    List   = "Listado de Clientes",
+    Create = "Crear un nuevo Cliente",
+    Update = "Actualizar un Cliente",
+    Delete = "Eliminar un Cliente",
+    Detail = "Detalle del Cliente",
+}

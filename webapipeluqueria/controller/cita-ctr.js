@@ -91,6 +91,7 @@ const getAllEntity = async (req=request, res=response) => {
             res.status(200).json({
                 ok:true,
                 page:num,
+                registro:citas.length,
                 citas
             });
         }else{
